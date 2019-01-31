@@ -63,6 +63,7 @@ export class Catcher extends Transform {
         this.Logger("Starting resolution of catcher promise", LogLevel.Silly);
         // Ensure promise has had chance to run
         const resolver = () => {
+            /* istanbul ignore else */
             if (this.Resolve) {
                 this.Resolve(this.Results);
                 this.Logger("Catcher promise has resolved", LogLevel.Silly);
