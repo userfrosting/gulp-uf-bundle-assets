@@ -105,17 +105,7 @@ class BundleSource extends Readable {
             objectMode: true
         });
 
-        // Ensure at least one path with provided.
-        if (files.size === 0) {
-            throw new Error("At least one file must be provided.");
-        }
-
         this.files = files;
-
-        // Ensure at least one path was provided.
-        if (paths.length === 0) {
-            throw new Error("At least one path must be provided.");
-        }
 
         // Copy array to we can reduce it as we go
         this.paths = paths.slice(0);
