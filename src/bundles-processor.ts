@@ -64,6 +64,7 @@ export async function BundlesProcessor(
                     resultFile.contents = null;
                     resultFiles.push(resultFile);
                 }
+                else logger("Non-Vinyl or Vinyl without path chunk was recieved from bundle factory. Information was not captured.", LogLevel.Complain);
 
                 // Store the chunk
                 resultChunks.push(chunk);

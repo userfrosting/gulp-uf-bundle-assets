@@ -43,11 +43,47 @@ test("BundlesProcessor with bundles that will never be satisfied", async t => {
     await t.throwsAsync(() => BundlesProcessor(files, bundles, BundleStreamFactory, () => {}), 'No file could be resolved for "test".');
 });
 
-// TODO Handle non-vinyl crap
+test("BundlesProcessor with non-Vinyl chunks emitted by bundle factory", async t => {
+    class TestNonVinylTransform extends TestTransform {
+        _transform(chunk: any, encoding: string, callback: TransformCallback): void {
+            this.push(chunk);
+            this.push("what's a vinyl?");
+            callback();
+        }
+    }
 
-// TODO handle exception block in bundles processor (if not already)
+    const NonVinylBundleStreamFactory: BundlerStreamFactory = (src: Readable): Transform => {
+        return src.pipe(new TestNonVinylTransform());
+    };
+
+    const files: Map<string, [Vinyl, number]> = new Map();
+    files.set("test", [MakeVinyl("test", "test"), 0]);
+    const bundles: Map<string, string[]> = new Map();
+    bundles.set("test", ["test"]);
+
+    const resultChunks: any[] = [
+        MakeVinyl("test", "test"),
+        "what's a vinyl?"
+    ];
+    const resultPaths: Map<string, Vinyl[]> = new Map();
+    resultPaths.set("test", [new Vinyl({contents: null, path: "test"})]);
+
+    TestBundler(t, [resultChunks, resultPaths], await BundlesProcessor(files, bundles, NonVinylBundleStreamFactory, () => {}));
+});
 
 // TODO Handle exception block in bundles process - promise (if not already)
+test("BundlesProcessor with bundle factory that generates errors (before piping)", async t => {
+    const ErrorBundleStreamFactory: BundlerStreamFactory = (src: Readable): Transform => {
+        throw new Error("RIP");
+    };
+
+    const files: Map<string, [Vinyl, number]> = new Map();
+    files.set("test", [MakeVinyl("test", "test"), 0]);
+    const bundles: Map<string, string[]> = new Map();
+    bundles.set("test", ["test"]);
+
+    await t.throwsAsync(() => BundlesProcessor(files, bundles, ErrorBundleStreamFactory, () => {}), "RIP");
+});
 
 function TestBundler(t: ExecutionContext, expected: [any[], Map<string, Vinyl[]>], actual: [any[], Map<string, Vinyl[]>]): void {
     // Check result chunks (order insensitive)
