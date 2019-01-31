@@ -7,7 +7,7 @@
   "types": "./dist/main.d.ts",
   "scripts": {
     "pretest": "tsc",
-    "test": "nyc ava",
+    "test": "if-env CI=true && nyc ava || ava",
     "prepublishOnly": "tsc",
     "prevsion": "npm test",
     "version": "changelog-updater && git add CHANGELOG.md",
@@ -52,6 +52,7 @@
     "@types/vinyl": "^2.0.2",
     "ava": "^1.0.1",
     "changelog-updater": "^1.1.0",
+    "if-env": "^1.0.4",
     "typescript": "^3.1.6"
   },
   "engines": {

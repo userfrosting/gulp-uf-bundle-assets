@@ -25,17 +25,35 @@ export async function BundlesProcessor(
         for (const [name, paths] of bundles) {
             logger(`Building bundle "${name}"`, LogLevel.Normal);
 
-            // Create catcher
-            const catcher = new Catcher(logger);
-
             // Build bundler with source and bundle name
             logger("Invoking provided bundler", LogLevel.Silly);
-            bundleStreamFactory(new BundleSource(files, paths), name)
-                .pipe(catcher);
+
+            // Wrap to permit catching and reporting of errors
+            const chunks = await new Promise<any[]>(async (resolve, reject) => {
+                try {
+                    // Create catcher
+                    const catcher = new Catcher(logger);
+
+                    // Create bundle source (and handle errors)
+                    const source = new BundleSource(files, paths)
+                    .on("error", (e) => {
+                        reject(e);
+                    });
+
+                    // Run provided transform stream factory
+                    bundleStreamFactory(source, name)
+                        .pipe(catcher);
+
+                    // Resolve on catcher completion
+                    resolve(await catcher.Collected);
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
 
             // Catch results
             logger("Catching outputs", LogLevel.Silly);
-            const chunks = await catcher.Collected;
 
             // Add to resultPaths and resultChunks
             const resultFiles: Vinyl[] = [];
@@ -87,7 +105,17 @@ class BundleSource extends Readable {
             objectMode: true
         });
 
+        // Ensure at least one path with provided.
+        if (files.size === 0) {
+            throw new Error("At least one file must be provided.");
+        }
+
         this.files = files;
+
+        // Ensure at least one path was provided.
+        if (paths.length === 0) {
+            throw new Error("At least one path must be provided.");
+        }
 
         // Copy array to we can reduce it as we go
         this.paths = paths.slice(0);
@@ -100,7 +128,7 @@ class BundleSource extends Readable {
         if (this.paths.length > 0) {
             const path = this.paths.shift();
             if (this.files.has(path)) this.push(this.files.get(path)[0].clone());
-            else new Error(`No file could be resolved for ${path}.`);
+            else this.emit("error", new Error(`No file could be resolved for "${path}".`));
         }
         else this.push(null);
     }

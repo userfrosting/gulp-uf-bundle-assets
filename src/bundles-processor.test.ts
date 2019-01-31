@@ -9,7 +9,6 @@ test("BundlesProcessor with iterable inputs empty", async t => {
     const bundles: Map<string, string[]> = new Map();
 
     TestBundler(t, [[], new Map()], await BundlesProcessor(files, bundles, BundleStreamFactory, () => {}));
-
 });
 
 test("BundlesProcessor with files but no bundles", async t => {
@@ -34,6 +33,21 @@ test("BundlesProcessor with files and bundles", async t => {
 
     TestBundler(t, [resultChunks, resultPaths], await BundlesProcessor(files, bundles, BundleStreamFactory, () => {}));
 });
+
+test("BundlesProcessor with bundles that will never be satisfied", async t => {
+    const files: Map<string, [Vinyl, number]> = new Map();
+    files.set("test2", [MakeVinyl("test", "test"), 0]);
+    const bundles: Map<string, string[]> = new Map();
+    bundles.set("test", ["test"]);
+
+    await t.throwsAsync(() => BundlesProcessor(files, bundles, BundleStreamFactory, () => {}), 'No file could be resolved for "test".');
+});
+
+// TODO Handle non-vinyl crap
+
+// TODO handle exception block in bundles processor (if not already)
+
+// TODO Handle exception block in bundles process - promise (if not already)
 
 function TestBundler(t: ExecutionContext, expected: [any[], Map<string, Vinyl[]>], actual: [any[], Map<string, Vinyl[]>]): void {
     // Check result chunks (order insensitive)
