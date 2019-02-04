@@ -4,11 +4,13 @@ import PluginError from "plugin-error";
 import { Readable, Transform, TransformCallback } from "stream";
 import Vinyl from "vinyl";
 import { BundlesProcessor } from "./bundles-processor";
-import { Config, LogLevel } from "./config";
+import { LogLevel } from "./log-levels";
 import { PluginName } from "./plugin-details";
+import { Config } from "./config/config";
 
 // Foward public exports
-export { MergeRawConfigs, ValidateRawConfig } from "./config";
+export { default as MergeConfig } from "./config/merge-configs";
+export { default as ValidateRawConfig } from "./config/validate-config";
 
 /**
  * Assists in orchastrating bundle operations.

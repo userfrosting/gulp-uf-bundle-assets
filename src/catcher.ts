@@ -1,9 +1,8 @@
 import { Transform, TransformCallback } from "stream";
-import { LogLevel } from "./config";
+import { LogLevel } from "./log-levels";
 
 /**
  * All this does is collect all stream data and once all read resolves a promise with the collected chunks.
- * !IMPORTANT! Stream this is piped into to must return _something_ otherwise `Collected` will never resolve.
  */
 export class Catcher extends Transform {
     /**

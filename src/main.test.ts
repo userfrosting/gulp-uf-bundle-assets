@@ -1,9 +1,9 @@
 import test from "ava";
 import Bundler, { Bundlers } from "./main";
-import { Config } from "./config";
 import { Transform, Readable } from "stream";
 import { Catcher } from "./catcher";
 import Vinyl from "vinyl";
+import { Config } from "./config/config";
 
 test("Bundler basic scenario", async t => {
     const config: Config = {

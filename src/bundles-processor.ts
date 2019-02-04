@@ -2,7 +2,7 @@ import Vinyl, { isVinyl } from "vinyl";
 import { Catcher } from "./catcher";
 import { BundlerStreamFactory } from "./main";
 import { Readable } from "stream";
-import { LogLevel } from "./config";
+import { LogLevel } from "./log-levels";
 
 /**
  * Processes provided bundle definitions.
@@ -37,6 +37,7 @@ export async function BundlesProcessor(
                     // Create bundle source (and handle errors)
                     const source = new BundleSource(files, paths)
                     .on("error", (e) => {
+                        // Catcher will be unpiped automatically.
                         reject(e);
                     });
 
