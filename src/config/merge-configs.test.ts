@@ -17,6 +17,13 @@ test("Multiple empty objects", t => {
 });
 
 /**
+ * Should return object with empty bundle key.
+ */
+test("First object with bundle property and second object empty", t => {
+	t.deepEqual(MergeConfig([{ bundle: {}}, {}]), { bundle: {}});
+});
+
+/**
  * Should return object equviliant to input.
  */
 test("Single object", t => {

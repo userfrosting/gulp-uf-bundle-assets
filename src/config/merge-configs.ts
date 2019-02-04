@@ -26,6 +26,7 @@ export default function MergeConfigs(rawConfigs: Config[]): Config {
                 nextConfig.bundle = {};
 
             for (const bundleName in outConfig.bundle) {
+                /* istanbul ignore else */
                 if (outConfig.bundle.hasOwnProperty(bundleName)) {
                     // Conduct merge if already defined on nextConfig
                     if (nextConfig.bundle.hasOwnProperty(bundleName)) {
