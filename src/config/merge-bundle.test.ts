@@ -129,8 +129,50 @@ test("Collision rule set to merge with duplicate resources", t => {
     const existingBundle: Bundle = {
         scripts: [
             "foo.js"
+        ],
+        styles: [
+            "test.css"
         ]
     };
+    const nextBundle: Bundle = {
+        scripts: [
+            "bar.js",
+            "foo.js",
+            "zeta.js"
+        ],
+        styles: [
+            "test.css"
+        ],
+        options: {
+            sprinkle: {
+                onCollision: "merge"
+            }
+        }
+    };
+    const output: Bundle = {
+        scripts: [
+            "foo.js",
+            "bar.js",
+            "zeta.js"
+        ],
+        styles: [
+            "test.css"
+        ],
+        options: {
+            sprinkle: {
+                onCollision: "merge"
+            }
+        }
+    };
+    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+});
+
+/**
+ * Should return results of a logical merge of the bundles when merge collision rule is used.
+ * Merged arrays should be concatenated with contents of first being at top, and later duplicates removed.
+ */
+test("Collision rule set to merge with empty target bundle", t => {
+    const existingBundle: Bundle = {};
     const nextBundle: Bundle = {
         scripts: [
             "bar.js",
@@ -145,8 +187,8 @@ test("Collision rule set to merge with duplicate resources", t => {
     };
     const output: Bundle = {
         scripts: [
-            "foo.js",
             "bar.js",
+            "foo.js",
             "zeta.js"
         ],
         options: {

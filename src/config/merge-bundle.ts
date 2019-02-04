@@ -23,13 +23,13 @@ export default function MergeBundle(existingBundle: Bundle, nextBundle: Bundle):
             return nextBundle;
         // Merge
         case CollisionReactions.merge: {
-            // TODO Worth noting that there is no typing for Merge currently
             // Merge arrays manually if needed
             if (existingBundle.scripts && nextBundle.scripts)
                 nextBundle.scripts = [...new Set([...existingBundle.scripts, ...nextBundle.scripts])];
             if (existingBundle.styles && nextBundle.styles)
                 nextBundle.styles = [...new Set([...existingBundle.styles, ...nextBundle.styles])];
 
+            // TODO Worth noting that there is no typing for Extend currently
             return Extend(true, existingBundle, nextBundle);
         }
         // Ignore - Return existing bundle
