@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+This release focused on internal refactoring and improving test coverage.
+
+### Fixed
+- Potential deadlock in bundles processor.
+- Swallowing of exceptions raised within bundler factory and bundler factory streams.
+- Other undocumented assorted edge cases.
+
 ## [3.0.0-rc.1] - 2019-01-09
 
 This release focuses on simplifying the package for UserFrosting 4 to improve maintainability. Features unsupported by UF4 are largely removed.
