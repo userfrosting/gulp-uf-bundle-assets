@@ -176,3 +176,22 @@ test("All possible collision rules", t => {
         "Property bundle>test>options>sprinkle>onCollision must be a valid rule."
     );
 });
+
+/**
+ * Should throw if the sprinkle property of options of bundle is not an object.
+ */
+test("Non-string for options>sprinkle>onCollision", t => {
+    const bundle: any = {
+        options: {
+            sprinkle: {
+                onCollision: {
+                    is: "a complicated beast"
+                }
+            }
+        }
+    };
+    t.throws(
+        () => ValidateBundle(bundle, "test"),
+        "Property bundle>test>options>sprinkle>onCollision must be a string."
+    );
+});
