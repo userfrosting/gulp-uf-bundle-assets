@@ -45,10 +45,10 @@ export default function ValidateConfig(config: Config): void {
 
                 const resolved = resolvePath(matcher);
                 if (matchers.indexOf(resolved) !== -1) {
-                    throw new Error(`Value matcher of property "VirtualPathRules" is a duplicate: "${matcher}"`);
+                    throw new Error(`Value matcher of property "VirtualPathRules" has a duplicate "${matcher}" which resolves to "${resolved}"`);
                 }
                 else
-                    matchers.push(matcher);
+                    matchers.push(resolved);
             }
         }
     }

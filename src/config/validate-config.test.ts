@@ -1,6 +1,7 @@
 import test from "ava";
 import ValidateConfig from "./validate-config";
 import { Config } from "./config";
+import { resolve as resolvePath } from "path";
 
 /**
  * Should complete without throwing.
@@ -13,21 +14,31 @@ test("Empty object", t => {
  * Should complete without throwing.
  */
 test("Empty object bundle property", t => {
-	const input: any = {
+	const config: any = {
 		bundle: {}
 	}
-	t.notThrows(() => ValidateConfig(input));
+	t.notThrows(() => ValidateConfig(config));
+});
+
+/**
+ * Should complete without throwing.
+ */
+test("Valid bundle property", t => {
+	const config: Config = {
+		bundle: {}
+	}
+	t.notThrows(() => ValidateConfig(config));
 });
 
 /**
  * Should throw when bundle property is not an object.
  */
-test("Invalid bundle property", t => {
-	const input: any = {
+test("Non-object bundle property", t => {
+	const config: any = {
 		bundle: "a string"
 	}
 	t.throws(
-        () => ValidateConfig(input),
+        () => ValidateConfig(config),
         `Property "bundle" must be an object and not null.`
     );
 });
@@ -36,25 +47,25 @@ test("Invalid bundle property", t => {
  * Should complete without throwing.
  */
 test("Valid virtual path rules", t => {
-	const input: Config = {
+	const config: Config = {
 		VirtualPathRules: [
 			["test", "testtest"]
 		]
 	}
-	t.notThrows(() => ValidateConfig(input));
+	t.notThrows(() => ValidateConfig(config));
 });
 
 /**
  * Should throw when an invalid empty matcher is used for virtual path rules.
  */
-test("Invalid empty matcher virtual path rules", t => {
-	const input: Config = {
+test("Empty matcher virtual path rules", t => {
+	const config: Config = {
 		VirtualPathRules: [
 			["", "testtest"]
 		]
 	}
 	t.throws(
-        () => ValidateConfig(input),
+        () => ValidateConfig(config),
         `Value matcher of property "VirtualPathRules" is empty.`
     );
 });
@@ -62,14 +73,51 @@ test("Invalid empty matcher virtual path rules", t => {
 /**
  *Should throw when an invalid empty replacement is used for virtual path rules.
  */
-test("Invalid empty replacement virtual path rules", t => {
-	const input: Config = {
+test("Empty replacement virtual path rules", t => {
+	const config: Config = {
 		VirtualPathRules: [
 			["test", ""]
 		]
 	}
 	t.throws(
-        () => ValidateConfig(input),
+        () => ValidateConfig(config),
         `Value replacement of property "VirtualPathRules" is empty.`
+    );
+});
+
+/**
+ *Should throw when an invalid empty replacement is used for virtual path rules.
+ */
+test("Non-array for replacement virtual path rules", t => {
+	const config1: any = {
+		VirtualPathRules: "not-an-array!"
+	}
+	t.throws(
+        () => ValidateConfig(config1),
+        `Property "VirtualPathRules" must be an object and not null.`
+    );
+
+    const config2: any = {
+		VirtualPathRules: null
+	}
+	t.throws(
+        () => ValidateConfig(config2),
+        `Property "VirtualPathRules" must be an object and not null.`
+    );
+});
+
+/**
+ * Should throw when a matcher has a dupliate.
+ */
+test("Duplicate matcher virtual path rules", t => {
+	const config: Config = {
+		VirtualPathRules: [
+            ["dup", "testtest"],
+            ["dup", "test"]
+		]
+	}
+	t.throws(
+        () => ValidateConfig(config),
+        `Value matcher of property "VirtualPathRules" has a duplicate "dup" which resolves to "${resolvePath("dup")}"`
     );
 });
