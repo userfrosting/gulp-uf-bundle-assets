@@ -15,7 +15,9 @@ test("Empty object", t => {
  */
 test("Empty object bundle property", t => {
 	const config: any = {
-		bundle: {}
+		bundle: {
+            foo: {}
+        }
 	}
 	t.notThrows(() => ValidateConfig(config));
 });
