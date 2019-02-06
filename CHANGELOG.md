@@ -13,6 +13,7 @@ This release focused on internal refactoring and improving test coverage. Many d
 - Potential deadlock in bundles processor.
 - Swallowing of exceptions raised within bundler factory and bundler factory streams.
 - Virtual path rules in a config not being correctly checked for duplicate matchers.
+- Fixed edge case where if the first file in a bundle failed to a resolve a file the resulting exception would never bubble up due to the source stream never being unpaused. #21
 - Other undocumented assorted edge cases.
 
 ## [3.0.0-rc.1] - 2019-01-09

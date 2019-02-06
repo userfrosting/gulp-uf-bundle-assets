@@ -212,7 +212,6 @@ export default class Bundler extends Transform {
             this.Logger("Starting bundling of scripts", LogLevel.Normal);
             let [chunks, resultsMap] = await BundlesProcessor(this.ResolvedFiles, this.ScriptBundles, this.Bundlers.Scripts, this.Logger);
 
-
             for (const chunk of chunks) {
                 this.push(chunk);
             }

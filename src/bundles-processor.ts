@@ -36,13 +36,17 @@ export async function BundlesProcessor(
 
                     // Create bundle source (and handle errors)
                     const source = new BundleSource(files, paths)
-                    .on("error", (e) => {
-                        // Catcher will be unpiped automatically.
-                        reject(e);
-                    });
+                        .on("error", (e) => {
+                            // Bundle stream will be unpiped automatically
+                            reject(e);
+                        });
 
                     // Run provided transform stream factory
                     bundleStreamFactory(source, name)
+                        .on("error", (e) => {
+                            // Catcher will be unpiped automatically.
+                            reject(e);
+                        })
                         .pipe(catcher);
 
                     // Resolve on catcher completion
@@ -111,6 +115,9 @@ class BundleSource extends Readable {
 
         // Copy array to we can reduce it as we go
         this.paths = paths.slice(0);
+
+        // Force out of unpaused (prevents cases where Catcher will never recieve any event)
+        this.resume();
     }
 
     /**
