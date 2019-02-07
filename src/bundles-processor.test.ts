@@ -26,6 +26,20 @@ test("Files but no bundles", async t => {
 });
 
 /**
+ * Should return empty bundle in results.
+ */
+test("Empty bundle but no files", async t => {
+    const files: Map<string, [Vinyl, number]> = new Map();
+    const bundles: Map<string, string[]> = new Map();
+    bundles.set('test', []);
+
+    const results = new Map();
+    results.set('test', []);
+
+    TestBundler(t, [[], results], await BundlesProcessor(files, bundles, BundleStreamFactory, () => {}));
+});
+
+/**
  * Should have tangible results.
  */
 test("Normal files and bundles", async t => {

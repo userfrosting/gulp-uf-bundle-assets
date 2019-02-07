@@ -198,6 +198,7 @@ export default class Bundler extends Transform {
         catch (error) {
             /* istanbul ignore next: Applying coverage here is out of scope as errors produced cannot yet be predicted. */
             this.Logger("_transform completed with error", LogLevel.Scream);
+            /* istanbul ignore next */
             callback(new PluginError(PluginName, error));
         }
     }
