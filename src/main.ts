@@ -230,8 +230,14 @@ export default class Bundler extends Transform {
                 this.push(chunk);
             }
 
-            for (const [name, paths] of resultsMap)
-                this.BundleResultsMap.set(name, paths);
+            for (const [name, paths] of resultsMap) {
+                if (this.BundleResultsMap.has(name)) {
+                    const allPaths = this.BundleResultsMap.get(name);
+                    allPaths.push(...paths)
+                    this.BundleResultsMap.set(name, allPaths);
+                }
+                else this.BundleResultsMap.set(name, paths);
+            }
 
             this.Logger("Completed bundling of styles", LogLevel.Normal);
 

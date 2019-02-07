@@ -6,6 +6,7 @@ import Vinyl from "vinyl";
 import { Config } from "./config/config";
 import { SimplePluginError } from "plugin-error";
 import { resolve as resolvePath } from "path";
+import { stringify } from "querystring";
 
 /**
  * Generic joiner to use for mocking the bundling of resources.
@@ -55,12 +56,16 @@ test("Bundler complex success scenario", async t => {
                 test: {
                     styles: [
                         "test.css"
+                    ],
+                    scripts: [
+                        "test.js"
                     ]
                 }
-            }
+            },
+            Logger: () => {}
         },
         Joiner,
-        BundleResultsCb: results => t.deepEqual(results, new Map<string, Vinyl[]>([['test', [new Vinyl( {path: resolvePath("test.css")})]]]))
+        BundleResultsCb: results => testBundlerResultsCallbackData(t, results, new Map<string, Vinyl[]>([ ['test', [new Vinyl( {path: resolvePath("test.css")}), new Vinyl( {path: resolvePath("test.js")})]]]))
     };
 
     // Define inputs
@@ -68,19 +73,33 @@ test("Bundler complex success scenario", async t => {
         new Vinyl({
             path: resolvePath("test.css"),
             contents: Buffer.from(".test { color: #121435; }")
+        }),
+        new Vinyl({
+            path: resolvePath("test.js"),
+            contents: Buffer.from("const the = 'thing';")
         })
     ];
 
     // Define expected outputs
     const expected = [
         new Vinyl({
+            path: resolvePath("test.js"),
+            contents: Buffer.from("const the = 'thing';")
+        }),
+        new Vinyl({
+            path: resolvePath("test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        }),
+
+        // Another copy as the joiner will emit another copy
+        new Vinyl({
             path: resolvePath("test.css"),
             contents: Buffer.from(".test { color: #121435; }")
         }),
         // Another copy as the joiner will emit another copy
         new Vinyl({
-            path: resolvePath("test.css"),
-            contents: Buffer.from(".test { color: #121435; }")
+            path: resolvePath("test.js"),
+            contents: Buffer.from("const the = 'thing';")
         })
     ];
 
@@ -122,6 +141,15 @@ test("Bundler basic failure scenario", async t => {
         t.is((e as SimplePluginError).message, `No file could be resolved for "${resolvePath("./testpath.css")}".`);
     }
 });
+
+/**
+ * Compares virtual files based on their declared path, returning a number that indicates their position.
+ * @param a Entity one
+ * @param b Entity two
+ */
+function vinylComparator(a: Vinyl, b: Vinyl): number {
+    return a.path.localeCompare(b.path);
+}
 
 interface BundlerArgs {
     Config: Config;
@@ -172,8 +200,27 @@ async function testBundlerResults(t: ExecutionContext, args: BundlerArgs, stream
     bundler
         .pipe(catcher);
 
+    function comparator(a, b): number {
+        if (a.path && b.path) {
+            return vinylComparator(a, b);
+        }
+        else {
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+        }
+    }
+
     // Inspect results
-    t.deepEqual((await catcher.Collected).sort(), expected.sort());
+    t.deepEqual((await catcher.Collected).sort(comparator), expected.sort(comparator));
+}
+
+function testBundlerResultsCallbackData(t: ExecutionContext, actual: Map<string, Vinyl[]>, expected: Map<string, Vinyl[]>) {
+    t.is(actual.size, expected.size);
+    actual.forEach((files, bundleName) => {
+        t.true(expected.has(bundleName));
+        t.deepEqual(files.sort(vinylComparator), expected.get(bundleName).sort(vinylComparator));
+    });
 }
 
 /**
