@@ -33,7 +33,7 @@ export class Catcher extends Transform {
             objectMode: true
         });
 
-        this.Logger = logger;
+        this.Logger = (msg, lvl) => logger(`Catcher > ${msg}`, lvl);
 
         // Set promise
         this.Logger("Creating promise with external completion source", LogLevel.Silly);

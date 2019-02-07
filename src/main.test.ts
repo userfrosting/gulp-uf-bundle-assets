@@ -1,6 +1,6 @@
 import test, { ExecutionContext } from "ava";
 import Bundler, { Bundlers } from "./main";
-import { Transform, Readable, Stream } from "stream";
+import { Readable, Stream } from "stream";
 import { Catcher } from "./catcher";
 import Vinyl from "vinyl";
 import { Config } from "./config/config";
@@ -11,16 +11,8 @@ import { resolve as resolvePath } from "path";
  * Generic joiner to use for mocking the bundling of resources.
  */
 const Joiner: Bundlers = {
-    Scripts: () => {
-        return new Transform({
-            objectMode: true
-        });
-    },
-    Styles: () => {
-        return new Transform({
-            objectMode: true
-        });
-    }
+    Scripts: stream => stream,
+    Styles: stream => stream
 };
 
 /**
@@ -46,6 +38,50 @@ test("Bundler basic success scenario", async t => {
         {},
         "test",
         21
+    ];
+
+    // Test
+    await testBundlerResults(t, args, streamInputs, expected);
+});
+
+/**
+ * Should complete without throwing, return all files from input stream, and have Vinyl null file objects sent to results callback.
+ */
+test("Bundler complex success scenario", async t => {
+    // Create bundler args
+    const args: BundlerArgs = {
+        Config: {
+            bundle: {
+                test: {
+                    styles: [
+                        "test.css"
+                    ]
+                }
+            }
+        },
+        Joiner,
+        BundleResultsCb: results => t.deepEqual(results, new Map<string, Vinyl[]>([['test', [new Vinyl( {path: resolvePath("test.css")})]]]))
+    };
+
+    // Define inputs
+    const streamInputs = [
+        new Vinyl({
+            path: resolvePath("test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        })
+    ];
+
+    // Define expected outputs
+    const expected = [
+        new Vinyl({
+            path: resolvePath("test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        }),
+        // Another copy as the joiner will emit another copy
+        new Vinyl({
+            path: resolvePath("test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        })
     ];
 
     // Test

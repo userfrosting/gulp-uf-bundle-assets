@@ -16,6 +16,8 @@ export async function BundlesProcessor(
     bundleStreamFactory: BundlerStreamFactory,
     logger: (value: string, level: LogLevel) => void
 ): Promise<[any[], Map<string, Vinyl[]>]> {
+    const Logger = (msg: string, lvl: LogLevel) => logger(`BundlesProcessor > ${msg}`, lvl);
+
     try {
         // Track results
         const resultFileInfo: Map<string, Vinyl[]> = new Map();
@@ -23,21 +25,22 @@ export async function BundlesProcessor(
 
         // Process each bundle
         for (const [name, paths] of bundles) {
-            logger(`Building bundle "${name}"`, LogLevel.Normal);
+            Logger(`Building bundle "${name}"`, LogLevel.Normal);
 
             // Build bundler with source and bundle name
-            logger("Invoking provided bundler", LogLevel.Silly);
+            Logger("Invoking provided bundler", LogLevel.Silly);
 
             // Wrap to permit catching and reporting of errors
             const chunks = await new Promise<any[]>(async (resolve, reject) => {
                 try {
                     // Create catcher
-                    const catcher = new Catcher(logger);
+                    const catcher = new Catcher(Logger);
 
                     // Create bundle source (and handle errors)
-                    const source = new BundleSource(files, paths)
+                    const source = new BundleSource(files, paths, Logger)
                         .on("error", (e) => {
                             // Bundle stream will be unpiped automatically
+                            Logger("Error emitted by bundle source", LogLevel.Scream);
                             reject(e);
                         });
 
@@ -45,6 +48,7 @@ export async function BundlesProcessor(
                     bundleStreamFactory(source, name)
                         .on("error", (e) => {
                             // Catcher will be unpiped automatically.
+                            Logger("Error emitted by provided joiner", LogLevel.Scream);
                             reject(e);
                         })
                         .pipe(catcher);
@@ -58,7 +62,7 @@ export async function BundlesProcessor(
             });
 
             // Catch results
-            logger("Catching outputs", LogLevel.Silly);
+            Logger("Catching outputs", LogLevel.Silly);
 
             // Add to resultPaths and resultChunks
             const resultFiles: Vinyl[] = [];
@@ -69,7 +73,7 @@ export async function BundlesProcessor(
                     resultFile.contents = null;
                     resultFiles.push(resultFile);
                 }
-                else logger("Non-Vinyl or Vinyl without path chunk was recieved from bundle factory. Information was not captured.", LogLevel.Complain);
+                else Logger("Non-Vinyl or Vinyl without path chunk was recieved from bundle factory. Information was not captured.", LogLevel.Complain);
 
                 // Store the chunk
                 resultChunks.push(chunk);
@@ -79,11 +83,11 @@ export async function BundlesProcessor(
             resultFileInfo.set(name, resultFiles)
         }
 
-        logger("Returning bundling results", LogLevel.Silly);
+        Logger("Returning bundling results", LogLevel.Silly);
         return [resultChunks, resultFileInfo];
     }
     catch (error) {
-        logger("BundlesProcessor completed with error", LogLevel.Scream);
+        Logger("BundlesProcessor completed with error", LogLevel.Scream);
         throw error;
     }
 }
@@ -102,11 +106,13 @@ class BundleSource extends Readable {
      */
     private readonly files: Map<string, [Vinyl, number]>;
 
+    private readonly Logger: (value: string, level: LogLevel) => void;
+
     /**
      * @param files File map to retrieve files from.
      * @param paths Paths to use as keys in file map.
      */
-    constructor(files: Map<string, [Vinyl, number]>, paths: string[]) {
+    constructor(files: Map<string, [Vinyl, number]>, paths: string[], logger: (value: string, level: LogLevel) => void) {
         super({
             objectMode: true
         });
@@ -118,6 +124,8 @@ class BundleSource extends Readable {
 
         // Force out of unpaused (prevents cases where Catcher will never recieve any event)
         this.resume();
+
+        this.Logger = (msg, lvl) => logger(`BundleSource > ${msg}`, lvl);
     }
 
     /**
@@ -126,9 +134,20 @@ class BundleSource extends Readable {
     _read() {
         if (this.paths.length > 0) {
             const path = this.paths.shift();
-            if (this.files.has(path)) this.push(this.files.get(path)[0].clone());
-            else this.emit("error", new Error(`No file could be resolved for "${path}".`));
+            this.Logger(`Locating "${path}"...`, LogLevel.Silly);
+            if (this.files.has(path)) {
+                const file = this.files.get(path)[0].clone();
+                this.Logger(`Found, pushing "${file.path}" on through.`, LogLevel.Silly);
+                this.push(file);
+            }
+            else {
+                this.Logger(`Couldn't find "${path}"!`, LogLevel.Silly);
+                this.emit("error", new Error(`No file could be resolved for "${path}".`));
+            }
         }
-        else this.push(null);
+        else {
+            this.Logger("Nothing left to send", LogLevel.Silly);
+            this.push(null);
+        }
     }
 }

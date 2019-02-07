@@ -28,7 +28,7 @@ export enum CollisionReactions {
  */
 interface SprinkleOptions {
     /**
-     *
+     * TODO
      */
     onCollision?: CollisionReactions | string;
 }
