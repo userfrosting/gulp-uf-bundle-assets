@@ -48,7 +48,7 @@ test("Bundler basic success scenario", async t => {
 /**
  * Should complete without throwing, return all files from input stream, and have Vinyl null file objects sent to results callback.
  */
-test("Bundler complex success scenario", async t => {
+test("Bundler complex success scenario 1", async t => {
     // Create bundler args
     const args: BundlerArgs = {
         Config: {
@@ -83,22 +83,96 @@ test("Bundler complex success scenario", async t => {
     // Define expected outputs
     const expected = [
         new Vinyl({
+            path: resolvePath("test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        }),
+        // Returned by joiner
+        new Vinyl({
+            path: resolvePath("test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        }),
+        new Vinyl({
             path: resolvePath("test.js"),
             contents: Buffer.from("const the = 'thing';")
         }),
-        new Vinyl({
-            path: resolvePath("test.css"),
-            contents: Buffer.from(".test { color: #121435; }")
-        }),
-
-        // Another copy as the joiner will emit another copy
-        new Vinyl({
-            path: resolvePath("test.css"),
-            contents: Buffer.from(".test { color: #121435; }")
-        }),
-        // Another copy as the joiner will emit another copy
+        // Returned by joiner
         new Vinyl({
             path: resolvePath("test.js"),
+            contents: Buffer.from("const the = 'thing';")
+        })
+    ];
+
+    // Test
+    await testBundlerResults(t, args, streamInputs, expected);
+});
+
+/**
+ * Should complete without throwing, and return all files from input stream.
+ */
+test("Bundler complex success scenario 2", async t => {
+    // Create bundler args
+    const args: BundlerArgs = {
+        Config: {
+            bundle: {
+                test1: {
+                    styles: [
+                        "magicdir/test.css"
+                    ]
+                },
+                test2: {
+                    scripts: [
+                        "magicdir/test.js"
+                    ]
+                }
+            },
+            VirtualPathRules: [
+                ['testdir', 'magicdir'],
+                ['tdir', 'magicdir']
+            ]
+        },
+        Joiner
+    };
+
+    // Define inputs
+    const streamInputs = [
+        new Vinyl({
+            path: resolvePath("tdir/test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        }),
+        // Will end up being ignored
+        new Vinyl({
+            path: resolvePath("testdir/test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        }),
+        // Will end up being ignored
+        new Vinyl({
+            path: resolvePath("testdir/test.js"),
+            contents: Buffer.from("const the = 'thing';")
+        }),
+        new Vinyl({
+            path: resolvePath("tdir/test.js"),
+            contents: Buffer.from("const the = 'thing';")
+        })
+    ];
+
+    // Define expected outputs
+    const expected = [
+        new Vinyl({
+            path: resolvePath("tdir/test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        }),
+        // Returned by joiner
+        new Vinyl({
+            path: resolvePath("tdir/test.css"),
+            contents: Buffer.from(".test { color: #121435; }")
+        }),
+        new Vinyl({
+            path: resolvePath("tdir/test.js"),
+            contents: Buffer.from("const the = 'thing';")
+        }),
+        // Returned by joiner
+        new Vinyl({
+            path: resolvePath("tdir/test.js"),
             contents: Buffer.from("const the = 'thing';")
         })
     ];

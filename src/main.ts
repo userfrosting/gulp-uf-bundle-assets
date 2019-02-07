@@ -196,7 +196,7 @@ export default class Bundler extends Transform {
             callback();
         }
         catch (error) {
-            // Ideally this shouldn't ever be needed, however we *are* dealing with external data.
+            /* istanbul ignore next: Applying coverage here is out of scope as errors produced cannot yet be predicted. */
             this.Logger("_transform completed with error", LogLevel.Scream);
             callback(new PluginError(PluginName, error));
         }
