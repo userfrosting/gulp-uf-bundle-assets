@@ -122,8 +122,8 @@ class BundleSource extends Readable {
         // Copy array to we can reduce it as we go
         this.paths = paths.slice(0);
 
-        // Force out of unpaused (prevents cases where Catcher will never recieve any event)
-        this.resume();
+        // Prevent Catcher from becoming stuck when nothing will be coming through
+        if (this.paths.length === 0) this.resume();
 
         this.Logger = (msg, lvl) => logger(`BundleSource > ${msg}`, lvl);
     }
