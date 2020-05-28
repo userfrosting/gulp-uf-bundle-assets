@@ -45,7 +45,7 @@
                 },
                 {
                     "name": "Run tests",
-                    "run": "./node_modules/.bin/nyc --reporter=lcovonly npm test"
+                    "run": "npm test"
                 },
                 {
                     "name": "Push coverage to Codecov",

@@ -23,7 +23,8 @@
         "vpath",
         "gulpplugin",
         "gulpfile",
-        "automerged"
+        "automerged",
+        "lcovonly"
     ],
     "ignorePaths": [
         "cspell.json",

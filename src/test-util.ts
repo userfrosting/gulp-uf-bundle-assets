@@ -5,7 +5,6 @@ import { ExecutionContext } from "ava";
  * Maps lib logging to ava logging to assist debugging of failing tests.
  * @param t Execution context for test. Needed to associate logs with tests.
  */
-/* istanbul ignore next */
 export function mapAvaLoggerToStandard(t: ExecutionContext): TsLog.Logger {
     return {
         debug(message, ...optionalParams) {

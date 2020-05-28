@@ -8,7 +8,7 @@
     "types": "./dist/main.d.ts",
     "scripts": {
         "pretest": "tsc && api-extractor run --local",
-        "test": "nyc --reporter=text ava",
+        "test": "c8 --all --reporter=text --reporter=lcovonly ava",
         "prepublishOnly": "tsc",
         "preversion": "npm test",
         "version": "npm run version:apiDocRefresh && npm run version:changelogBump",
@@ -58,8 +58,8 @@
         "@types/node": "^14.0.1",
         "@types/vinyl": "^2.0.4",
         "ava": "^3.7.1",
+        "c8": "^7.1.2",
         "changelog-updater": "^1.1.0",
-        "nyc": "^15.0.1",
         "p-defer": "^3.0.0",
         "sort-on": "^4.1.0",
         "typescript": "^3.8.3"
