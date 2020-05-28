@@ -1,7 +1,7 @@
 import { Config } from "./config.js";
 import MergeBundle from "./merge-bundle.js";
 import extend from "just-extend";
-import ExtendedError from "errlop";
+import ono from "@jsdevtools/ono";
 
 /**
  * Merges a collection of configurations.
@@ -35,8 +35,7 @@ export default function MergeConfigs(rawConfigs: Config[]): Config {
                         nextConfig.bundle[bundleName] = MergeBundle(outConfig.bundle[bundleName], nextConfig.bundle[bundleName]);
                     }
                     catch (exception) {
-                        // @ts-ignore
-                        throw new ExtendedError.default(`Exception raised while merging bundle '${bundleName}' in the raw configuration at index '${rawConfigs.indexOf(config)}'.`, exception);
+                        throw ono(exception, `Exception raised while merging bundle '${bundleName}' in the raw configuration at index '${rawConfigs.indexOf(config)}'.`);
                     }
                 }
                 // Otherwise just set it

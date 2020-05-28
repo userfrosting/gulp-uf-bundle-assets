@@ -12,7 +12,8 @@
         "jcarrivick",
         "bytecode",
         "backported",
-        "lockfiles"
+        "lockfiles",
+        "jsdevtools"
     ],
     "ignoreWords": [
         "userfrosting",

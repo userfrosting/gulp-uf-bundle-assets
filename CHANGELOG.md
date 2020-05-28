@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated interface of `BundleOrchestrator._transform` reflecting tighter constraints in `@types/node` v14. No modification to runtime logic, method only used by NodeJS streams.
 - Removed `esm` loader in favour of native ESM support.
 - Raised minimum NodeJS version from 10 to 12.17.0.
+- Changed exception type thrown when a configuration merge fails, consequence of changing error wrapper from `errlop` to `@jsdevtools/ono`.
 
 ## [4.0.1] - 2020-04-18
 
