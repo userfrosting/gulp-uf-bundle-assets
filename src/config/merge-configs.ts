@@ -1,5 +1,5 @@
 import { Config } from "./config.js";
-import MergeBundle from "./merge-bundle.js";
+import { MergeBundle } from "./merge-bundle.js";
 import extend from "just-extend";
 import ono from "@jsdevtools/ono";
 
@@ -11,7 +11,7 @@ import ono from "@jsdevtools/ono";
  * @param rawConfigs - Raw (untransformed) configurations to merge.
  * @public
  */
-export default function MergeConfigs(rawConfigs: Config[]): Config {
+export function MergeConfigs(rawConfigs: Config[]): Config {
     // No point doing processing if we've got only 1 item
     if (rawConfigs.length === 1) return rawConfigs[0];
 

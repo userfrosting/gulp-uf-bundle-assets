@@ -29,8 +29,6 @@ class BundleOrchestrator extends Transform {
     _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): Promise<void>;
 }
 
-export { BundleOrchestrator as BundleOrchastrator }
-
 export { BundleOrchestrator }
 
 export default BundleOrchestrator;
