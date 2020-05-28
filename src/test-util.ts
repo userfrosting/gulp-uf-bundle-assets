@@ -7,6 +7,7 @@ import { ExecutionContext } from "ava";
  */
 export function mapAvaLoggerToStandard(t: ExecutionContext): TsLog.Logger {
     return {
+        /* c8 ignore next 2 */
         debug(message, ...optionalParams) {
             return t.log("DEBUG: " + message, ...optionalParams);
         },

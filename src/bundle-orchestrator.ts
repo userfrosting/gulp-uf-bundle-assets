@@ -190,6 +190,8 @@ export class BundleOrchestrator extends Transform {
             callback();
         }
         catch (error) {
+            // This exists to ensure we are a polite pipeline member, for now is intentionally left untested.
+            // Due to a bug in c8, the coverage gap cannot be ignored. https://github.com/bcoe/c8/issues/135
             this.logger.error("_transform completed with error", { error });
             callback(new PluginError(PluginName, error));
         }

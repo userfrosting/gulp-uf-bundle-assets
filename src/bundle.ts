@@ -96,6 +96,7 @@ export class Bundle {
             for (const path of this.initialPaths) {
                 const file = this.files.get(path);
                 if (file) orderedFiles.push(file);
+                /* c8 ignore next */
                 else throw new Error("Unexpected condition, previously tracked file is undefined");
             }
 
