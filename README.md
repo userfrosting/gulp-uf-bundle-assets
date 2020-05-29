@@ -14,10 +14,14 @@ npm i -D  @userfrosting/gulp-bundle-assets
 
 ## Usage
 
+> **IMPORTANT**<br/>
+> This is an ES module package targeting NodeJS `^12.17.0 || >=13.2.0`, refer to the [NodeJS ESM docs](https://nodejs.org/api/esm.html) regarding how to correctly import.
+> ESM loaders like `@babel/loader` or `esm` likely won't work as expected. Using native ESM support in Gulp is recommended (once it lands [gulpjs/gulp-cli#214](https://github.com/gulpjs/gulp-cli/pull/214), [gulpjs/interpret#65](https://github.com/gulpjs/interpret/issues/65))
+
 ```js
-// gulpfile.esm.js
+// gulpfile.mjs
 import AssetBundler from "@userfrosting/gulp-bundle-assets";
-import { src, dest } from "gulp";
+import Gulp from "gulp";
 import cleanCss from "gulp-clean-css";
 import concatCss from "gulp-concat-css";
 import uglify from "gulp-uglify";
@@ -53,9 +57,9 @@ export function bundle() {
         }
     };
 
-    return src("src/**")
+    return Gulp.src("src/**")
         .pipe(new AssetBundler(config, joiner))
-        .pipe(dest("public/assets/"));
+        .pipe(Gulp.dest("public/assets/"));
 }
 ```
 
