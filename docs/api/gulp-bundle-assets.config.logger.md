@@ -9,5 +9,5 @@ Optional logger that will be used throughout bundling process.
 <b>Signature:</b>
 
 ```typescript
-Logger?: Logger;
+Logger?: TsLog.Logger;
 ```

@@ -9,18 +9,18 @@ Collects copies of applicable files to later bundle.
 <b>Signature:</b>
 
 ```typescript
-_transform(chunk: any, encoding: string, callback: TransformCallback): Promise<void>;
+_transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): Promise<void>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  chunk | <code>any</code> | Stream chunk, may be a Vinyl object. |
-|  encoding | <code>string</code> | Encoding of chunk, if applicable. |
-|  callback | <code>TransformCallback</code> | Callback to indicate processing is completed. |
+|  chunk | any | Stream chunk, may be a Vinyl object. |
+|  encoding | BufferEncoding | Encoding of chunk, if applicable. |
+|  callback | TransformCallback | Callback to indicate processing is completed. |
 
 <b>Returns:</b>
 
-`Promise<void>`
+Promise&lt;void&gt;
 

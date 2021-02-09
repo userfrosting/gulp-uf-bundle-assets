@@ -16,7 +16,7 @@ export interface Bundle
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [options](./gulp-bundle-assets.bundle.options.md) | <code>Options</code> |  |
-|  [scripts](./gulp-bundle-assets.bundle.scripts.md) | <code>string[]</code> |  |
-|  [styles](./gulp-bundle-assets.bundle.styles.md) | <code>string[]</code> |  |
+|  [options?](./gulp-bundle-assets.bundle.options.md) | [Options](./gulp-bundle-assets.options.md) | <i>(Optional)</i> |
+|  [scripts?](./gulp-bundle-assets.bundle.scripts.md) | string\[\] | <i>(Optional)</i> |
+|  [styles?](./gulp-bundle-assets.bundle.styles.md) | string\[\] | <i>(Optional)</i> |
 

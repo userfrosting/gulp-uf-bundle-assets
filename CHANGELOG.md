@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [5.0.0] - 2021-02-09
+
 ### Changed
 - Updated interface of `BundleOrchestrator._transform` reflecting tighter constraints in `@types/node` v14. No modification to runtime logic, method only used by NodeJS streams.
 - Removed `esm` loader in favour of native ESM support.

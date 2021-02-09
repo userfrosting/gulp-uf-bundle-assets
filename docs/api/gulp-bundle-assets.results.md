@@ -16,6 +16,6 @@ export interface Results
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [scripts](./gulp-bundle-assets.results.scripts.md) | <code>Map&lt;string, Vinyl[]&gt;</code> |  |
-|  [styles](./gulp-bundle-assets.results.styles.md) | <code>Map&lt;string, Vinyl[]&gt;</code> |  |
+|  [scripts](./gulp-bundle-assets.results.scripts.md) | Map&lt;string, Vinyl\[\]&gt; |  |
+|  [styles](./gulp-bundle-assets.results.styles.md) | Map&lt;string, Vinyl\[\]&gt; |  |
 

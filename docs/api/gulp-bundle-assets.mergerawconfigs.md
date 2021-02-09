@@ -11,16 +11,16 @@ Merges a collection of configurations. No validation is conducted, it is expecte
 <b>Signature:</b>
 
 ```typescript
-export default function MergeConfigs(rawConfigs: Config[]): Config;
+export declare function MergeConfigs(rawConfigs: Config[]): Config;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  rawConfigs | <code>Config[]</code> | Raw (untransformed) configurations to merge. |
+|  rawConfigs | [Config](./gulp-bundle-assets.config.md)<!-- -->\[\] | Raw (untransformed) configurations to merge. |
 
 <b>Returns:</b>
 
-`Config`
+[Config](./gulp-bundle-assets.config.md)
 

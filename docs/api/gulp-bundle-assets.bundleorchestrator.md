@@ -11,6 +11,7 @@ Orchestrates bundling.
 ```typescript
 export declare class BundleOrchestrator extends Transform 
 ```
+<b>Extends:</b> Transform
 
 ## Constructors
 

@@ -16,5 +16,5 @@ export interface Options
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [sprinkle](./gulp-bundle-assets.options.sprinkle.md) | <code>SprinkleOptions</code> |  |
+|  [sprinkle?](./gulp-bundle-assets.options.sprinkle.md) | [SprinkleOptions](./gulp-bundle-assets.sprinkleoptions.md) | <i>(Optional)</i> |
 
