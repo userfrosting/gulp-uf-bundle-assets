@@ -16,7 +16,7 @@ constructor(config: Config, joiner: Bundlers, resultsCallback?: ResultsCallback)
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  config | <code>Config</code> | Raw (but valid) configuration file used for bundle resolution. |
-|  joiner | <code>Bundlers</code> | Object capable of generating the Transform streams needed for generation of final bundles. |
-|  resultsCallback | <code>ResultsCallback</code> | Callback invoked once all bundles generated. |
+|  config | [Config](./gulp-bundle-assets.config.md) | Raw (but valid) configuration file used for bundle resolution. |
+|  joiner | [Bundlers](./gulp-bundle-assets.bundlers.md) | Object capable of generating the Transform streams needed for generation of final bundles. |
+|  resultsCallback | [ResultsCallback](./gulp-bundle-assets.resultscallback.md) | Callback invoked once all bundles generated. |
 

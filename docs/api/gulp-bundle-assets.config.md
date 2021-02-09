@@ -16,7 +16,7 @@ export interface Config
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [bundle](./gulp-bundle-assets.config.bundle.md) | <code>Bundles</code> | Bundle definitions. |
-|  [cwd](./gulp-bundle-assets.config.cwd.md) | <code>string</code> | Current working directory to use when resolving the full paths of bundle dependencies. Defaults to <code>process.cwd()</code>. |
-|  [Logger](./gulp-bundle-assets.config.logger.md) | <code>Logger</code> | Optional logger that will be used throughout bundling process. |
+|  [bundle?](./gulp-bundle-assets.config.bundle.md) | [Bundles](./gulp-bundle-assets.bundles.md) | <i>(Optional)</i> Bundle definitions. |
+|  [cwd?](./gulp-bundle-assets.config.cwd.md) | string | <i>(Optional)</i> Current working directory to use when resolving the full paths of bundle dependencies. Defaults to <code>process.cwd()</code>. |
+|  [Logger?](./gulp-bundle-assets.config.logger.md) | TsLog.Logger | <i>(Optional)</i> Optional logger that will be used throughout bundling process. |
 

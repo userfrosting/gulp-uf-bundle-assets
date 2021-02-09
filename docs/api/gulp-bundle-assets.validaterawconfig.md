@@ -9,16 +9,16 @@ Throws an exception if the provided raw config contains invalid data.
 <b>Signature:</b>
 
 ```typescript
-export default function ValidateConfig(config: Config): void;
+export declare function ValidateConfig(config: Config): void;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  config | <code>Config</code> | Raw configuration to validate. |
+|  config | [Config](./gulp-bundle-assets.config.md) | Raw configuration to validate. |
 
 <b>Returns:</b>
 
-`void`
+void
 

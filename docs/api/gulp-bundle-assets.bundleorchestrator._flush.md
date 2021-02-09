@@ -14,9 +14,9 @@ _flush(callback: TransformCallback): Promise<void>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  callback | <code>TransformCallback</code> |  |
+|  callback | TransformCallback |  |
 
 <b>Returns:</b>
 
-`Promise<void>`
+Promise&lt;void&gt;
 
