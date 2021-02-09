@@ -4,7 +4,7 @@ import { Stream, Readable } from "stream";
 import { resolve as resolvePath } from "path";
 import Vinyl from "vinyl";
 import intoStream from "into-stream";
-import { mapAvaLoggerToStandard } from "./test-util.js";
+import { logAdapter } from "@userfrosting/ts-log-adapter-ava";
 
 /**
  * Returns stream factory was provided, without modification.
@@ -23,7 +23,7 @@ test("Ignores unused files", async t => {
             resolvePath("./test-used-2.js"),
         ],
         bundleFactoryEcho,
-        mapAvaLoggerToStandard(t),
+        logAdapter(t.log),
     );
 
     t.is(
@@ -51,7 +51,7 @@ test("Returns a stream once feed sends in the last required file", async t => {
             resolvePath("./test-2.js"),
         ],
         bundleFactoryEcho,
-        mapAvaLoggerToStandard(t),
+        logAdapter(t.log),
     );
 
     t.is(
@@ -76,7 +76,7 @@ test("Multiple non-Vinyl chunks returned by bundle stream", async t => {
         function (): Stream {
             return intoStream.object([ {}, {} ]);
         },
-        mapAvaLoggerToStandard(t),
+        logAdapter(t.log),
     );
 
     await t.throwsAsync(
@@ -94,7 +94,7 @@ test("Single non-Vinyl chunks returned by bundle stream", async t => {
         function (): Stream {
             return intoStream.object({});
         },
-        mapAvaLoggerToStandard(t),
+        logAdapter(t.log),
     );
 
     await t.throwsAsync(
