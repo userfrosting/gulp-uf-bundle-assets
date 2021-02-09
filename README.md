@@ -16,7 +16,7 @@ npm i -D  @userfrosting/gulp-bundle-assets
 
 > **IMPORTANT**<br/>
 > This is an ES module package targeting NodeJS `^12.17.0 || >=13.2.0`, refer to the [NodeJS ESM docs](https://nodejs.org/api/esm.html) regarding how to correctly import.
-> ESM loaders like `@babel/loader` or `esm` likely won't work as expected. Using native ESM support in Gulp is recommended (once it lands [gulpjs/gulp-cli#214](https://github.com/gulpjs/gulp-cli/pull/214), [gulpjs/interpret#65](https://github.com/gulpjs/interpret/issues/65))
+> ESM loaders like `@babel/loader` or `esm` likely won't work as expected.
 
 ```js
 // gulpfile.mjs
