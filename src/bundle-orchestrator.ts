@@ -189,8 +189,8 @@ export class BundleOrchestrator extends Transform {
 
             callback();
         }
+        /* c8 ignore next 4 */
         catch (error) {
-            /* c8 ignore next 3 */
             this.logger.error("_transform completed with error", { error });
             callback(new PluginError(PluginName, error));
         }
