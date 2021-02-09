@@ -4,11 +4,11 @@
 
 ```ts
 
-import { Logger } from 'ts-log';
 import { Readable } from 'stream';
 import { Stream } from 'stream';
 import { Transform } from 'stream';
 import { TransformCallback } from 'stream';
+import TsLog from 'ts-log';
 import Vinyl from 'vinyl';
 
 // @public
@@ -28,8 +28,6 @@ class BundleOrchestrator extends Transform {
     _flush(callback: TransformCallback): Promise<void>;
     _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): Promise<void>;
 }
-
-export { BundleOrchestrator as BundleOrchastrator }
 
 export { BundleOrchestrator }
 
@@ -65,7 +63,7 @@ export enum CollisionReactions {
 export interface Config {
     bundle?: Bundles;
     cwd?: string;
-    Logger?: Logger;
+    Logger?: TsLog.Logger;
 }
 
 // @public

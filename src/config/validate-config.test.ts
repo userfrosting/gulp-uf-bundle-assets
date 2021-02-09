@@ -1,5 +1,5 @@
 import test from "ava";
-import ValidateConfig from "./validate-config.js";
+import { ValidateConfig } from "./validate-config.js";
 import { Config } from "./config.js";
 
 /**

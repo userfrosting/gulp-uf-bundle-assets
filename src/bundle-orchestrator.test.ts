@@ -6,7 +6,7 @@ import { Readable, Stream } from "stream";
 import Vinyl from "vinyl";
 import { resolve as resolvePath } from "path";
 import sortOn from "sort-on";
-import { mapAvaLoggerToStandard } from "./test-util.js";
+import { logAdapter } from "@userfrosting/ts-log-adapter-ava";
 import pDefer from "p-defer";
 
 /**
@@ -89,7 +89,7 @@ function buildBundler(t: ExecutionContext, flags: IBundleBuilderFlags = {}) {
             cwd: flags.explicitCwd
                 ? process.cwd()
                 : undefined,
-            Logger: mapAvaLoggerToStandard(t),
+            Logger: logAdapter(t.log),
             bundle: flags.noBundles
                 ? undefined
                 : {

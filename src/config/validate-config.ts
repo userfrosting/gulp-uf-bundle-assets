@@ -1,12 +1,12 @@
 import { Config } from "./config.js";
-import ValidateBundle from "./validate-bundle.js";
+import { ValidateBundle } from "./validate-bundle.js";
 
 /**
  * Throws an exception if the provided raw config contains invalid data.
  * @param config - Raw configuration to validate.
  * @public
  */
-export default function ValidateConfig(config: Config): void {
+export function ValidateConfig(config: Config): void {
     // If bundle key exists, value must be an object
     if ("bundle" in config) {
         const bundles = config.bundle;

@@ -1,7 +1,7 @@
 !dist/
 .editorconfig
 .gitattributes
-.nyc_output/
+coverage/
 .travis.yml
 **/*.test.d.ts
 **/*.test.js
@@ -14,3 +14,4 @@ temp/
 test-data/
 tsconfig.json
 .github
+.dependabot

@@ -1,5 +1,5 @@
 import test from "ava";
-import MergeBundle from "./merge-bundle.js";
+import { MergeBundle } from "./merge-bundle.js";
 import { Bundle } from "./config.js";
 
 /**

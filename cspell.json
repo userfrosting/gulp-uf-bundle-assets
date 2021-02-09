@@ -1,29 +1,32 @@
 {
-    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/v5.0.1-alpha.3/cspell.schema.json",
     "version": "0.1",
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/v5.0.1-alpha.3/cspell.schema.json",
     "language": "en-US",
     "words": [
-        "narthollis",
-        "Zaleski",
+        "backported",
+        "bytecode",
         "gregorymaertens",
+        "jcarrivick",
+        "jsdevtools",
+        "lockfiles",
         "Mele",
+        "narthollis",
         "Sherland",
         "Soares",
-        "jcarrivick",
-        "bytecode",
-        "backported",
-        "lockfiles"
+        "Zaleski"
     ],
     "ignoreWords": [
-        "userfrosting",
-        "errlop",
-        "preversion",
-        "postversion",
+        "automerged",
         "codecov",
-        "vpath",
-        "gulpplugin",
+        "errlop",
         "gulpfile",
-        "automerged"
+        "gulpjs",
+        "gulpplugin",
+        "lcovonly",
+        "postversion",
+        "preversion",
+        "userfrosting",
+        "vpath"
     ],
     "ignorePaths": [
         "cspell.json",

@@ -9,10 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Updated interface of `BundleOrchestrator._transform` reflecting tighter constraints in `@types/node` v14. No modification to runtime logic, method only used by NodeJS streams.
-
-## [4.0.1] - 2020-04-18
+- Removed `esm` loader in favour of native ESM support.
+- Raised minimum NodeJS version from 10 to 12.17.0.
+- Changed exception type thrown when a configuration merge fails, consequence of changing error wrapper from `errlop` to `@jsdevtools/ono`.
 
 [//]: # (spell-checker:disable)
+
+### Removed
+- Removed deprecated export `BundleOrchastrator`.
+
+## [4.0.1] - 2020-04-18
 
 ### Fixed
 - Missing bundles and files not being logged when stream completes without providing all required files.

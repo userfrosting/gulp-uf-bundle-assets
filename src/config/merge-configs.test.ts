@@ -1,26 +1,26 @@
 import test from "ava";
-import MergeConfig from "./merge-configs.js";
+import { MergeConfigs } from "./merge-configs.js";
 import { Config, CollisionReactions } from "./config.js";
 
 /**
  * Should return empty object.
  */
 test("Single empty object", t => {
-	t.deepEqual(MergeConfig([{}]), {});
+	t.deepEqual(MergeConfigs([{}]), {});
 });
 
 /**
  * Should return empty object.
  */
 test("Multiple empty objects", t => {
-	t.deepEqual(MergeConfig([{}, {}, {}]), {});
+	t.deepEqual(MergeConfigs([{}, {}, {}]), {});
 });
 
 /**
  * Should return object with empty bundle key.
  */
 test("First object with bundle property and second object empty", t => {
-	t.deepEqual(MergeConfig([{ bundle: {}}, {}]), { bundle: {}});
+	t.deepEqual(MergeConfigs([{ bundle: {}}, {}]), { bundle: {}});
 });
 
 /**
@@ -46,7 +46,7 @@ test("Single object", t => {
 		}
 	};
 
-	t.deepEqual(MergeConfig([config]), expected);
+	t.deepEqual(MergeConfigs([config]), expected);
 });
 
 /**
@@ -96,7 +96,7 @@ test("Multiple objects", t => {
 		}
 	};
 
-	t.deepEqual(MergeConfig([config1, config2, config3]), expected);
+	t.deepEqual(MergeConfigs([config1, config2, config3]), expected);
 });
 
 /**
@@ -128,10 +128,11 @@ test("Colliding bundle with invalid collision rule on incoming bundle", t => {
 	};
 
 	t.throws(
-        () => MergeConfig([config1, config2]),
+        () => MergeConfigs([config1, config2]),
         {
-            instanceOf: Error,
-            message: "Exception raised while merging bundle 'testBundle' in the raw configuration at index '1'.",
+            instanceOf: RangeError,
+            message: "Exception raised while merging bundle 'testBundle' in the raw configuration at index '1'. \n"
+                + "Unexpected input 'badCollisionHandler' for 'onCollision' option of next bundle.",
         }
     );
 });
@@ -164,5 +165,5 @@ test("Colliding bundle with invalid collision rule on target bundle", t => {
 		}
 	};
 
-	t.notThrows(() => MergeConfig([input1, input2]));
+	t.notThrows(() => MergeConfigs([input1, input2]));
 });
