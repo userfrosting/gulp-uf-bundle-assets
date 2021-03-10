@@ -120,13 +120,30 @@ function buildBundler(t: ExecutionContext, flags: IBundleBuilderFlags = {}) {
 }
 
 test("Bundles with all dependencies met", async t => {
-    t.plan(3);
+    t.plan(5);
 
     const resultsCallbackCompletion = pDefer();
     const resultsCallback: ResultsCallback = function (results) {
-        // Results data is based on a clone of the actual Vinyl files, length is enough for now
-        t.is(results.scripts.size, 1);
-        t.is(results.styles.size, 1);
+        t.is(
+            Array.from(results.scripts.values()).reduce<number>((numFiles, files) => numFiles + files.length, 0),
+            1,
+            "Should be exactly 1 file"
+        );
+        t.is(
+            Array.from(results.scripts.values()).some(results => results.some(result => result.contents !== null)),
+            false,
+            "Vinyl instances should not contain reference to actual file data"
+        ); 
+        t.is(
+            Array.from(results.styles.values()).reduce<number>((numFiles, files) => numFiles + files.length, 0),
+            1,
+            "Should be exactly 1 file"
+        );
+        t.is(
+            Array.from(results.styles.values()).some(results => results.some(result => result.contents !== null)),
+            false,
+            "Vinyl instances should not contain reference to actual file data"
+        ); 
         resultsCallbackCompletion.resolve();
     };
 

@@ -16,3 +16,5 @@ tsconfig.json
 .github
 .dependabot
 .vscode
+.pnpm-store
+.lando.yml

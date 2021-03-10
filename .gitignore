@@ -5,3 +5,4 @@ dist/
 coverage
 temp
 pnpm-lock.yaml
+.pnpm-store

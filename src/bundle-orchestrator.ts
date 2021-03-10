@@ -89,7 +89,13 @@ async function handleVinylChunk(
         const results = await bundle.feed(chunk);
         if (results) {
             bundles.delete(bundle);
-            tracker.set(bundle.name, results);
+            // Create an immutable copy, sans contents
+            const resultRefs = results.map(result => {
+                const resultRef = result.clone({ contents: false });
+                resultRef.contents = null;
+                return resultRef;
+            });
+            tracker.set(bundle.name, resultRefs);
             for (const result of results) {
                 push(result);
             }
@@ -107,6 +113,7 @@ export class BundleOrchestrator extends Transform {
 
     private styleBundles: Set<Bundle> = new Set();
 
+    /** @todo This should be a no-op when a callback is not provided */
     private results: Results = {
         scripts: new Map(),
         styles: new Map(),

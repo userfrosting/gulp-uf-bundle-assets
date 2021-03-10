@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Development aid being invoked by `postinstall` hook which was never intended to run outside of development workflows.
+- Results callback arguments being potentially modified by later pipeline activities.
+
+### Changed
+- Results callback will no longer include a reference to file data.
+
 ## [5.0.0] - 2021-02-09
 
 ### Changed
