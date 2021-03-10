@@ -82,20 +82,24 @@ function bundleFactory(
 async function handleVinylChunk(
     chunk: Vinyl,
     bundles: Set<Bundle>,
-    tracker: Map<string, Vinyl[]>,
-    push: (chunk: any) => void
+    push: (chunk: any) => void,
+    tracker?: Map<string, Vinyl[]>,
 ) {
     for (const bundle of bundles) {
         const results = await bundle.feed(chunk);
         if (results) {
             bundles.delete(bundle);
-            // Create an immutable copy, sans contents
-            const resultRefs = results.map(result => {
-                const resultRef = result.clone({ contents: false });
-                resultRef.contents = null;
-                return resultRef;
-            });
-            tracker.set(bundle.name, resultRefs);
+
+            if (tracker) {
+                // Create an immutable copy, sans contents, for results callback
+                const resultRefs = results.map(result => {
+                    const resultRef = result.clone({ contents: false });
+                    resultRef.contents = null;
+                    return resultRef;
+                });
+                tracker.set(bundle.name, resultRefs);
+            }
+
             for (const result of results) {
                 push(result);
             }
@@ -113,11 +117,7 @@ export class BundleOrchestrator extends Transform {
 
     private styleBundles: Set<Bundle> = new Set();
 
-    /** @todo This should be a no-op when a callback is not provided */
-    private results: Results = {
-        scripts: new Map(),
-        styles: new Map(),
-    };
+    private results?: Results;
 
     private resultsCallback?: ResultsCallback;
 
@@ -132,6 +132,7 @@ export class BundleOrchestrator extends Transform {
         super({
             objectMode: true,
         });
+        this.push = this.push.bind(this);
 
         // First up, we assign the logger if its there
         /* c8 ignore else */
@@ -139,6 +140,12 @@ export class BundleOrchestrator extends Transform {
 
         // Results callback
         this.resultsCallback = resultsCallback;
+        if (this.resultsCallback) {
+            this.results = {
+                scripts: new Map(),
+                styles: new Map(),
+            };
+        }
 
         // Deep clone config object to prevent mutations from spilling out
         config = extend(true, {}, config);
@@ -188,8 +195,8 @@ export class BundleOrchestrator extends Transform {
             this.logger.trace("Received Vinyl chunk", { pathHistory: chunk.history });
 
             // Offer chunks to bundles, return any results
-            await handleVinylChunk(chunk, this.scriptBundles, this.results.scripts, this.push.bind(this));
-            await handleVinylChunk(chunk, this.styleBundles, this.results.styles, this.push.bind(this));
+            await handleVinylChunk(chunk, this.scriptBundles, this.push, this.results?.scripts);
+            await handleVinylChunk(chunk, this.styleBundles, this.push, this.results?.styles);
 
             // Push chunk on through
             this.push(chunk);
@@ -224,7 +231,7 @@ export class BundleOrchestrator extends Transform {
             }
 
             // Invoke results callback
-            if (this.resultsCallback) this.resultsCallback(this.results);
+            if (this.resultsCallback && this.results) this.resultsCallback(this.results);
 
             callback();
         }
