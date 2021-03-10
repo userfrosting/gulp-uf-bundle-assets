@@ -13,7 +13,9 @@
         "narthollis",
         "Sherland",
         "Soares",
-        "Zaleski"
+        "Zaleski",
+        "Lando",
+        "PNPM"
     ],
     "ignoreWords": [
         "automerged",
@@ -31,6 +33,7 @@
     "ignorePaths": [
         "cspell.json",
         "package-lock.json",
+        "pnpm-lock.yaml",
         "api-extractor.json",
         "docs/api/",
         "dist/",

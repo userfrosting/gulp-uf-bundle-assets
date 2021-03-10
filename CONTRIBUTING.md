@@ -11,6 +11,10 @@ The development and release process heavily lean into common NPM scripts, the on
 - `npm version ...` to create a new version.
 - `npm publish` to publish.
 
+The sole exception is the release readiness check. This is run automatically by the CI, and can be run locally with;
+
+- `npm run release-readiness`
+
 ## API Documentation
 
 API documentation is derived from source using [API Extractor](https://www.npmjs.com/package/@microsoft/api-extractor) and [API Documenter](https://www.npmjs.com/package/@microsoft/api-documenter). Entities tagged with `@public` will be included in API generated documentation.

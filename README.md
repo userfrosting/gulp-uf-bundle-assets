@@ -67,7 +67,7 @@ $ gulp bundle
 
 ## Integrating bundles into your app
 
-A results callback can be provided as a third paramater. On completion, it will be provided with a mapping for bundles to their respective virtual file paths. Note that path transformations performed after the bundler (including `dest`) won't be reflected and should be accounted for.
+A results callback can be provided as a third parameter. On completion, it will be provided with a mapping for bundles to their respective virtual file paths. Note that path transformations performed after the bundler (including `dest`) won't be reflected and should be accounted for.
 
 The "DIY" approach to bundle resulting mapping is used to permit deeper integration with any system, such as generating a file in the target language to decrease integration cost.
 
@@ -77,7 +77,7 @@ See [docs/api](./docs/api/index.md).
 
 ## Origins
 
-This plugin was originally forked from [gulp-bundle-assets](https://github.com/dowjones/gulp-bundle-assets) to fix a CSS import bug. It has since undergone numerous refactors to improve performance and flexability.
+This plugin was originally forked from [gulp-bundle-assets](https://github.com/dowjones/gulp-bundle-assets) to fix a CSS import bug. It has since undergone numerous refactors to improve performance and flexibility.
 
 ## License
 
