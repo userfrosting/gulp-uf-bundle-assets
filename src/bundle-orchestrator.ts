@@ -117,9 +117,10 @@ export class BundleOrchestrator extends Transform {
 
     private styleBundles: Set<Bundle> = new Set();
 
-    private results?: Results;
-
-    private resultsCallback?: ResultsCallback;
+    private results?: {
+        callback: ResultsCallback,
+        data: Results,
+    };
 
     private logger: TsLog.Logger = TsLog.dummyLogger;
 
@@ -139,12 +140,14 @@ export class BundleOrchestrator extends Transform {
         if (config.Logger) this.logger = config.Logger;
 
         // Results callback
-        this.resultsCallback = resultsCallback;
-        if (this.resultsCallback) {
+        if (resultsCallback) {
             this.results = {
-                scripts: new Map(),
-                styles: new Map(),
-            };
+                callback: resultsCallback,
+                data: {
+                    scripts: new Map(),
+                    styles: new Map(),
+                }
+            }
         }
 
         // Deep clone config object to prevent mutations from spilling out
@@ -195,8 +198,8 @@ export class BundleOrchestrator extends Transform {
             this.logger.trace("Received Vinyl chunk", { pathHistory: chunk.history });
 
             // Offer chunks to bundles, return any results
-            await handleVinylChunk(chunk, this.scriptBundles, this.push, this.results?.scripts);
-            await handleVinylChunk(chunk, this.styleBundles, this.push, this.results?.styles);
+            await handleVinylChunk(chunk, this.scriptBundles, this.push, this.results?.data?.scripts);
+            await handleVinylChunk(chunk, this.styleBundles, this.push, this.results?.data?.styles);
 
             // Push chunk on through
             this.push(chunk);
@@ -231,7 +234,7 @@ export class BundleOrchestrator extends Transform {
             }
 
             // Invoke results callback
-            if (this.resultsCallback && this.results) this.resultsCallback(this.results);
+            if (this.results) this.results.callback(this.results.data);
 
             callback();
         }
