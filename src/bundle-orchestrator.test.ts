@@ -110,8 +110,8 @@ function buildBundler(t: ExecutionContext, flags: IBundleBuilderFlags = {}) {
             }
         },
         {
-            Scripts: bundleFactoryJs,
-            Styles: bundleFactoryCss,
+            scripts: bundleFactoryJs,
+            styles: bundleFactoryCss,
         },
         flags.resultsCallback
             ? flags.resultsCallback
@@ -133,7 +133,7 @@ test("Bundles with all dependencies met", async t => {
             Array.from(results.scripts.values()).some(results => results.some(result => result.contents !== null)),
             false,
             "Vinyl instances should not contain reference to actual file data"
-        ); 
+        );
         t.is(
             Array.from(results.styles.values()).reduce<number>((numFiles, files) => numFiles + files.length, 0),
             1,
@@ -143,7 +143,7 @@ test("Bundles with all dependencies met", async t => {
             Array.from(results.styles.values()).some(results => results.some(result => result.contents !== null)),
             false,
             "Vinyl instances should not contain reference to actual file data"
-        ); 
+        );
         resultsCallbackCompletion.resolve();
     };
 

@@ -17,7 +17,7 @@ function bundleFactoryEcho(src: Readable): Stream {
 test("Ignores unused files", async t => {
     const bundle = new Bundle(
         "test",
-        "script",
+        "scripts",
         [
             resolvePath("./test-used-1.js"),
             resolvePath("./test-used-2.js"),
@@ -45,7 +45,7 @@ test("Ignores unused files", async t => {
 test("Returns a stream once feed sends in the last required file", async t => {
     const bundle = new Bundle(
         "test",
-        "script",
+        "scripts",
         [
             resolvePath("./test-1.js"),
             resolvePath("./test-2.js"),
@@ -71,7 +71,7 @@ test("Returns a stream once feed sends in the last required file", async t => {
 test("Multiple non-Vinyl chunks returned by bundle stream", async t => {
     const bundle = new Bundle(
         "test",
-        "script",
+        "scripts",
         [ resolvePath("./test-1.js") ],
         function (): Stream {
             return intoStream.object([ {}, {} ]);
@@ -89,7 +89,7 @@ test("Multiple non-Vinyl chunks returned by bundle stream", async t => {
 test("Single non-Vinyl chunks returned by bundle stream", async t => {
     const bundle = new Bundle(
         "test",
-        "script",
+        "scripts",
         [ resolvePath("./test-1.js") ],
         function (): Stream {
             return intoStream.object({});

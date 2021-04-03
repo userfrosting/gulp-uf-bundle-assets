@@ -43,12 +43,12 @@ export function bundle() {
         }
     };
     const joiner = {
-        Scripts(bundleStream, name) {
+        scripts(bundleStream, name) {
             return bundleStream
                 .pipe(concatJs(name + ".js"))// example.js
                 .pipe(uglify());
         },
-        Styles(bundleStream, name) {
+        styles(bundleStream, name) {
             return bundleStream
                 .pipe(concatCss(name + ".css"))// example.css
                 .pipe(cleanCss());

@@ -6,24 +6,24 @@ import getStream from "get-stream";
 
 /**
  * A function that returns a stream that will be used to bundle assets.
+ * @param src - Source stream.
+ * @param name - Name of bundle.
  * @public
  */
-export interface BundleStreamFactory {
-    /**
-     * @param src - Source stream.
-     * @param name - Name of bundle.
-     */
-    (src: Readable, name: string): Stream;
-}
+export type BundleStreamFactory = (src: Readable, name: string) => Stream;
 
-export type BundleType = "style" | "script";
+/**
+ * Supported bundle types.
+ * @public
+ */
+export type BundleTypes = "styles" | "scripts";
 
 /**
  * Represents a bundle to be bundled, assists in process.
  */
 export class Bundle {
     public readonly name: string;
-    private readonly type: BundleType;
+    private readonly type: BundleTypes;
     private readonly initialPaths: readonly string[];
     private remainingPaths: string[];
     private readonly files: Map<string, Vinyl> = new Map();
@@ -37,7 +37,7 @@ export class Bundle {
      */
     constructor(
         name: string,
-        type: BundleType,
+        type: BundleTypes,
         paths: string[],
         streamFactory: BundleStreamFactory,
         logger: TsLog.Logger

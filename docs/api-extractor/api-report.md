@@ -12,19 +12,13 @@ import TsLog from 'ts-log';
 import Vinyl from 'vinyl';
 
 // @public
-export interface Bundle {
-    // (undocumented)
+export type Bundle = Partial<Record<BundleTypes, string[]>> & {
     options?: Options;
-    // (undocumented)
-    scripts?: string[];
-    // (undocumented)
-    styles?: string[];
-}
+};
 
 // @public
 class BundleOrchestrator extends Transform {
-    constructor(config: Config, joiner: Bundlers, resultsCallback?: ResultsCallback);
-    // (undocumented)
+    constructor(config: Config, bundlers: Bundlers, resultsCallback?: ResultsCallback);
     _flush(callback: TransformCallback): Promise<void>;
     _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): Promise<void>;
 }
@@ -34,22 +28,18 @@ export { BundleOrchestrator }
 export default BundleOrchestrator;
 
 // @public
-export interface Bundlers {
-    Scripts: BundleStreamFactory;
-    Styles: BundleStreamFactory;
-}
+export type Bundlers = Record<BundleTypes, BundleStreamFactory>;
 
 // @public
 export interface Bundles {
-    // (undocumented)
     [x: string]: Bundle;
 }
 
 // @public
-export interface BundleStreamFactory {
-    // (undocumented)
-    (src: Readable, name: string): Stream;
-}
+export type BundleStreamFactory = (src: Readable, name: string) => Stream;
+
+// @public
+export type BundleTypes = "styles" | "scripts";
 
 // @public
 export enum CollisionReactions {
@@ -76,18 +66,10 @@ export interface Options {
 }
 
 // @public
-export interface Results {
-    // (undocumented)
-    scripts: Map<string, Vinyl[]>;
-    // (undocumented)
-    styles: Map<string, Vinyl[]>;
-}
+export type Results = Record<BundleTypes, Map<string, Vinyl[]>>;
 
 // @public
-export interface ResultsCallback {
-    // (undocumented)
-    (results: Results): void;
-}
+export type ResultsCallback = (results: Results) => void;
 
 // @public
 export interface SprinkleOptions {
@@ -97,7 +79,5 @@ export interface SprinkleOptions {
 // @public
 export function ValidateRawConfig(config: Config): void;
 
-
-// (No @packageDocumentation comment for this package)
 
 ```

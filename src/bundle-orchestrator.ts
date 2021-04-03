@@ -5,7 +5,7 @@ import { Config } from "./config/config.js";
 import extend from "just-extend";
 import { resolve as resolvePath } from "path";
 import PluginError from "plugin-error";
-import { BundleStreamFactory, Bundle, BundleType } from "./bundle.js";
+import { BundleStreamFactory, Bundle, BundleTypes } from "./bundle.js";
 
 const PluginName = "@userfrosting/gulp-bundle-assets";
 
@@ -13,52 +13,35 @@ const PluginName = "@userfrosting/gulp-bundle-assets";
  * Bundler results data shape.
  * @public
  */
-export interface Results {
-    scripts: Map<string, Vinyl[]>;
-    styles: Map<string, Vinyl[]>;
-}
+export type Results = Record<BundleTypes, Map<string, Vinyl[]>>;
 
 /**
  * Bundler results callback function interface.
+ * @param results - Results data.
  * @public
  */
-export interface ResultsCallback {
-    /**
-     * @param results - Results data.
-     */
-    (results: Results): void
-}
+export type ResultsCallback = (results: Results) => void;
 
 /**
  * Interface defining factories required to bundle styles and scripts.
  * @public
  */
-export interface Bundlers {
-    /**
-     * Returns a Transform that will handle bundling of script resources.
-     */
-    Scripts: BundleStreamFactory
-
-    /**
-     * Returns a Transform that will handle bundling of style resources.
-     */
-    Styles: BundleStreamFactory;
-}
+export type Bundlers = Record<BundleTypes, BundleStreamFactory>;
 
 /**
  * Helper responsible for constructing bundle instances.
  * @param name - Name of bundle.
  * @param rawPaths - Array of paths to assets which have not yet been fully resolved.
  * @param cwd - The current working directory to use for resolving raw paths.
- * @param joiner - User provided 'glue' functions.
+ * @param bundler - User provided 'glue' functions.
  * @param logger - Logging interface.
  */
 function bundleFactory(
     name: string,
-    type: BundleType,
+    type: BundleTypes,
     rawPaths: string[],
     cwd: string,
-    joiner: BundleStreamFactory,
+    bundler: BundleStreamFactory,
     logger: TsLog.Logger
 ) {
     const paths = [];
@@ -68,7 +51,7 @@ function bundleFactory(
         paths.push(path);
         logger.trace(`Resolved path: "${path}"`);
     }
-    return new Bundle(name, type, paths, joiner, logger);
+    return new Bundle(name, type, paths, bundler, logger);
 }
 
 /**
@@ -107,15 +90,20 @@ async function handleVinylChunk(
     }
 }
 
+function addBundle(bundles: Map<string, Set<Bundle>>, type: BundleTypes, bundle: Bundle) {
+    let typeBundles = bundles.get(type);
+    if (!typeBundles) typeBundles = new Set();
+    typeBundles.add(bundle);
+    bundles.set(type, typeBundles);
+}
+
 /**
  * Orchestrates bundling.
  * @public
  */
 export class BundleOrchestrator extends Transform {
 
-    private scriptBundles: Set<Bundle> = new Set();
-
-    private styleBundles: Set<Bundle> = new Set();
+    private bundles: Map<BundleTypes, Set<Bundle>> = new Map();
 
     private results?: {
         callback: ResultsCallback,
@@ -126,10 +114,10 @@ export class BundleOrchestrator extends Transform {
 
     /**
      * @param config - Raw (but valid) configuration file used for bundle resolution.
-     * @param joiner - Object capable of generating the Transform streams needed for generation of final bundles.
+     * @param bundlers - Object capable of generating the Transform streams needed for generation of final bundles.
      * @param resultsCallback - Callback invoked once all bundles generated.
      */
-    constructor(config: Config, joiner: Bundlers, resultsCallback?: ResultsCallback) {
+    constructor(config: Config, bundlers: Bundlers, resultsCallback?: ResultsCallback) {
         super({
             objectMode: true,
         });
@@ -161,18 +149,14 @@ export class BundleOrchestrator extends Transform {
             for (const name of Object.getOwnPropertyNames(config.bundle)) {
                 const bundle = config.bundle[name];
 
-                // JS
-                if (bundle.scripts) {
-                    this.logger.trace("Starting processing of script paths");
-                    this.scriptBundles.add(bundleFactory(name, "script", bundle.scripts, cwd, joiner.Scripts, this.logger));
-                    this.logger.trace("Completed processing of script paths");
-                }
-
-                // CSS
-                if (bundle.styles) {
-                    this.logger.trace("Starting processing of style paths");
-                    this.styleBundles.add(bundleFactory(name, "style", bundle.styles, cwd, joiner.Styles, this.logger));
-                    this.logger.trace("Completed processing of style paths");
+                for (const type of Object.getOwnPropertyNames(bundle)) {
+                    const castType = type as BundleTypes;
+                    const typeBundle = bundle[castType];
+                    if (typeBundle) {
+                        this.logger.trace(`Starting processing of ${type} paths`);
+                        addBundle(this.bundles, castType, bundleFactory(name, castType, typeBundle, cwd, bundlers[castType], this.logger));
+                        this.logger.trace(`Completed processing of ${type} paths`);
+                    }
                 }
             }
         }
@@ -185,7 +169,7 @@ export class BundleOrchestrator extends Transform {
      * @param encoding - Encoding of chunk, if applicable.
      * @param callback - Callback to indicate processing is completed.
      */
-    public async _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): Promise<void> {
+    public async _transform(chunk: unknown, encoding: BufferEncoding, callback: TransformCallback): Promise<void> {
         try {
             // Only handle Vinyl chunks
             if (!Vinyl.isVinyl(chunk)) {
@@ -198,8 +182,9 @@ export class BundleOrchestrator extends Transform {
             this.logger.trace("Received Vinyl chunk", { pathHistory: chunk.history });
 
             // Offer chunks to bundles, return any results
-            await handleVinylChunk(chunk, this.scriptBundles, this.push, this.results?.data?.scripts);
-            await handleVinylChunk(chunk, this.styleBundles, this.push, this.results?.data?.styles);
+            for (const [type, typeBundles] of this.bundles) {
+                await handleVinylChunk(chunk, typeBundles, this.push, this.results?.data?.[type]);
+            }
 
             // Push chunk on through
             this.push(chunk);
@@ -213,20 +198,23 @@ export class BundleOrchestrator extends Transform {
         }
     }
 
+    /**
+     * Triggers completion of bundling process.
+     * @param callback - callback to indicate processing is completed.
+     */
     public async _flush(callback: TransformCallback): Promise<void> {
         try {
             // Produce error if there are bundles without all requirements
-            if (this.scriptBundles.size > 0 || this.styleBundles.size > 0) {
+            if (Array.from(this.bundles).reduce((result, [_, typeBundles]) => result + typeBundles.size, 0) > 0) {
                 const missingBundles: {
-                    type: BundleType,
+                    type: string,
                     name: string,
                     remainingFiles: string[],
                 }[] = [];
-                for (const bundle of this.scriptBundles) {
-                    missingBundles.push(bundle.report());
-                }
-                for (const bundle of this.styleBundles) {
-                    missingBundles.push(bundle.report());
+                for (const [_, typeBundles] of this.bundles) {
+                    for (const bundle of typeBundles) {
+                        missingBundles.push(bundle.report())
+                    }
                 }
                 const errMessage = "Stream completed before all bundles received their dependencies";
                 this.logger.error(errMessage, missingBundles);

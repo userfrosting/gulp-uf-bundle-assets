@@ -1,3 +1,4 @@
+import { BundleTypes } from "../bundle.js";
 import TsLog from "ts-log";
 
 /**
@@ -44,20 +45,20 @@ export interface Options {
 }
 
 /**
- * Represents an asset bundle
+ * Represents an asset bundle. An asset bundle is further broken down into typed bundles.
  * @public
  */
-export interface Bundle {
-    scripts?: string[];
-    styles?: string[];
-    options?: Options;
-}
+export type Bundle = Partial<Record<BundleTypes, string[]>>
+    & { options?: Options };
 
 /**
  * Map of bundles.
  * @public
  */
 export interface Bundles {
+    /**
+     * A named asset bundle.
+     */
     [x: string]: Bundle;
 }
 
