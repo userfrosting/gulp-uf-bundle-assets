@@ -12,15 +12,13 @@ import TsLog from 'ts-log';
 import Vinyl from 'vinyl';
 
 // @public
-export type Bundle = Partial<Record<BundleTypes, string[]>> & {
-    options?: Options;
-};
+export type Bundle = Partial<Record<BundleTypes, readonly string[]>>;
 
 // @public
 class BundleOrchestrator extends Transform {
     constructor(config: Config, bundlers: Bundlers, resultsCallback?: ResultsCallback);
     _flush(callback: TransformCallback): Promise<void>;
-    _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): Promise<void>;
+    _transform(chunk: unknown, encoding: BufferEncoding, callback: TransformCallback): Promise<void>;
 }
 
 export { BundleOrchestrator }
@@ -32,7 +30,7 @@ export type Bundlers = Record<BundleTypes, BundleStreamFactory>;
 
 // @public
 export interface Bundles {
-    [x: string]: Bundle;
+    readonly [x: string]: Bundle;
 }
 
 // @public
@@ -42,27 +40,10 @@ export type BundleStreamFactory = (src: Readable, name: string) => Stream;
 export type BundleTypes = "styles" | "scripts";
 
 // @public
-export enum CollisionReactions {
-    error = 3,
-    ignore = 2,
-    merge = 1,
-    replace = 0
-}
-
-// @public
 export interface Config {
-    bundle?: Bundles;
-    cwd?: string;
-    Logger?: TsLog.Logger;
-}
-
-// @public
-export function MergeRawConfigs(rawConfigs: Config[]): Config;
-
-// @public
-export interface Options {
-    // (undocumented)
-    sprinkle?: SprinkleOptions;
+    readonly bundle?: Bundles;
+    readonly cwd?: string;
+    readonly Logger?: TsLog.Logger;
 }
 
 // @public
@@ -70,11 +51,6 @@ export type Results = Record<BundleTypes, Map<string, Vinyl[]>>;
 
 // @public
 export type ResultsCallback = (results: Results) => void;
-
-// @public
-export interface SprinkleOptions {
-    onCollision?: keyof typeof CollisionReactions;
-}
 
 // @public
 export function ValidateRawConfig(config: Config): void;

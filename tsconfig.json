@@ -13,10 +13,10 @@
         "outDir": "./dist/",
         "sourceMap": true,
         "strict": true,
+
         // TODO Remove once self-referencing supported https://github.com/microsoft/TypeScript/issues/38675
-        "baseUrl": "./src/",
         "paths": {
-            "@userfrosting/gulp-bundle-assets": [ "./main" ]
+            "@userfrosting/gulp-bundle-assets": [ "./src/main" ]
         }
     }
 }

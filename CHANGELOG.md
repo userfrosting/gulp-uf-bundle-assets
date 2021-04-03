@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Bundler object keys must match bundle config keys. e.g. `Scripts` should now be `scripts`.
 - TypeScript types have changed. See the [API report file](./docs/api-report.md) for the currently exported types.
 
+### Removed
+- Removed bundle merge feature.
+
 ## [5.0.1] - 2021-04-03
 
 ### Fixed
