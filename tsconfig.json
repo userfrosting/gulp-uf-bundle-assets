@@ -13,6 +13,7 @@
         "outDir": "./dist/",
         "sourceMap": true,
         "strict": true,
+        "forceConsistentCasingInFileNames": true,
 
         // TODO Remove once self-referencing supported https://github.com/microsoft/TypeScript/issues/38675
         "paths": {
