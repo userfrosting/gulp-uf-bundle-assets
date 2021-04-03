@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- Bundler object keys must match bundle config keys. e.g. `Scripts` should now be `scripts`.
+- TypeScript types have changed. See the [API report file](./docs/api-report.md) for the currently exported types.
+
 ## [5.0.1] - 2021-04-03
 
 ### Fixed
@@ -15,8 +19,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Results callback will no longer include a reference to file data.
-- Bundler object keys must match bundle config keys. e.g. `Scripts` should now be `scripts`.
-- TypeScript types have changed. See the [API report file](./docs/api-report.md) for the currently exported types.
 
 ## [5.0.0] - 2021-02-09
 
