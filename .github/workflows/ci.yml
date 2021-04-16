@@ -20,9 +20,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: ./node_modules/.bin/c8 --reporter=lcovonly npm test
-    - uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_UPLOAD_TOKEN }}
+    - uses: codecov/codecov-action@v1.3.2
   release-readiness:
     runs-on: ubuntu-latest
     steps:
