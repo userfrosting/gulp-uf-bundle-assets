@@ -7,18 +7,18 @@
     "exports": "./dist/main.js",
     "types": "./dist/main.d.ts",
     "scripts": {
-        "pretest": "tsc && api-extractor run --local",
+        "compile": "rm -rf ./dist && tsc",
+        "pretest": "npm run compile && api-extractor run --local",
         "test": "c8 --all --reporter=text --reporter=lcovonly ava",
-        "prepublishOnly": "tsc",
+        "prepublishOnly": "npm run compile",
         "preversion": "npm test",
         "version": "npm run version:apiDocRefresh && npm run version:changelogBump",
         "postversion": "git push && git push --tags",
         "version:changelogBump": "changelog-updater && git add CHANGELOG.md",
         "version:apiDocRefresh": "api-extractor run && api-documenter markdown -i ./temp -o ./docs/api && git add ./docs/api/*",
-        "prepare": "is-npm || npm i --package-lock-only",
         "release-readiness": "npm run release-readiness:cspell && npm run release-readiness:api-changes",
         "release-readiness:cspell": "cspell 'src/**' 'dist/**' 'docs/**' '*'",
-        "release-readiness:api-changes": "tsc && api-extractor run"
+        "release-readiness:api-changes": "npm run compile && api-extractor run"
     },
     "author": "Jordan Mele <SiliconSoldier@outlook.com.au> (https://djmm.me/)",
     "contributors": [
