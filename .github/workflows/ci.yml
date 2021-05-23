@@ -2,6 +2,8 @@ name: Continuous Integration
 on:
   # Every push
   push:
+  # Pull request
+  pull_request:
   schedule:
     # Every Monday and Thursday at 12PM UTC
     - cron: '0 12 * * 1,4'
@@ -11,22 +13,72 @@ jobs:
     strategy:
       matrix:
         platform: [ ubuntu-latest, macos-latest, windows-latest ]
-        node-version: [ ^12.17.0, ^13.0.0, ^14.0.0 ]
+        node-version: [ ^12.17.0, ^14.0.0 ]
     runs-on: ${{ matrix.platform }}
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2.1.5
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - run: npm ci --ignore-scripts
     - run: ./node_modules/.bin/c8 --reporter=lcovonly npm test
-    - uses: codecov/codecov-action@v1.3.2
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_UPLOAD_TOKEN }}
+
+  pnpm-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2.1.5
+      with:
+        node-version: ^14.0.0
+    - uses: actions/cache@v2
+      env:
+        cache-name: cache-pnpm-modules
+      with:
+        path: ~/.pnpm-store
+        key: pnpm-check-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
+        restore-keys: pnpm-check-${{ env.cache-name }}-
+    - uses: pnpm/action-setup@v2.0.1
+      with:
+        version: ^6.2.3
+        run_install: |
+          - args: [--ignore-scripts]
+    - run: pnpm run compile
+    - run: pnpm test
+
   release-readiness:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2.1.5
       with:
         node-version: ^14.0.0
     - run: npm ci
     - run: npm run release-readiness
+
+  dependabot-approveOrMerge:
+    needs: [test, pnpm-check, release-readiness]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Assess changes
+      uses: tony84727/changed-file-filter@v0.1.0
+      id: filter
+      with:
+        filters: |
+          requirementsChanged:
+            - 'package.json'
+    - name: Merge lockfile changes
+      uses: fastify/github-action-merge-dependabot@v2.0.0
+      if: steps.filter.outputs.requirementsChanged == 'false'
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Approve requirement changes
+      uses: fastify/github-action-merge-dependabot@v2.0.0
+      if: steps.filter.outputs.requirementsChanged == 'true'
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        approve-only: true
+
