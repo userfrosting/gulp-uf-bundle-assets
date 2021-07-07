@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="node" />
+
 import { Readable } from 'stream';
 import { Stream } from 'stream';
 import { Transform } from 'stream';
