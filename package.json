@@ -7,7 +7,7 @@
     "exports": "./dist/main.js",
     "types": "./dist/main.d.ts",
     "scripts": {
-        "compile": "rm -rf ./dist && tsc",
+        "compile": "del-cli ./dist && tsc",
         "pretest": "npm run compile && api-extractor run --local",
         "test": "c8 --all --reporter=text --reporter=lcovonly ava",
         "prepublishOnly": "npm run compile",
@@ -66,6 +66,7 @@
         "c8": "^7.5.0",
         "changelog-updater": "^2.0.2",
         "cspell": "^5.3.7",
+        "del-cli": "^4.0.0",
         "is-npm-cli": "^1.0.0",
         "p-defer": "^4.0.0",
         "sort-on": "^4.1.0",
