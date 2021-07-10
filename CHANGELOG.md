@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [5.0.2] - 2021-07-10
+
 ### Changed
 - Internal dependency `into-stream` bumped to `^7.0.0`.
 
