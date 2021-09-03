@@ -204,7 +204,7 @@ export class BundleOrchestrator extends Transform {
 
             callback();
         }
-        /* c8 ignore next 4 */
+        /* c8 ignore next 5 */
         catch (e) {
             const error = errorCaster(e);
             this.logger.error("_transform completed with error", { error });
