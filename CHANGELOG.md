@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- All caught and forwarded errors will now be an instance of `Error`, if they were not already.
+
 ## [5.0.2] - 2021-07-10
 
 ### Changed
