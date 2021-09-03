@@ -6,6 +6,7 @@ import extend from "just-extend";
 import { resolve as resolvePath } from "path";
 import PluginError from "plugin-error";
 import { BundleStreamFactory, Bundle, BundleType } from "./bundle.js";
+import { errorCaster } from "error-caster.js";
 
 const PluginName = "@userfrosting/gulp-bundle-assets";
 
@@ -204,7 +205,8 @@ export class BundleOrchestrator extends Transform {
             callback();
         }
         /* c8 ignore next 4 */
-        catch (error) {
+        catch (e) {
+            const error = errorCaster(e);
             this.logger.error("_transform completed with error", { error });
             callback(new PluginError(PluginName, error));
         }
@@ -235,8 +237,12 @@ export class BundleOrchestrator extends Transform {
 
             callback();
         }
-        catch (error) {
-            this.logger.error("_flush completed with error", { error: error.toString() });
+        catch (e) {
+            const error = errorCaster(e);
+            this.logger.error(
+                "_flush completed with error",
+                { error: error.toString() },
+            );
             callback(new PluginError(PluginName, error));
         }
     }
