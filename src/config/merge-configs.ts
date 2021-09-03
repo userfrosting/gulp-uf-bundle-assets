@@ -2,7 +2,7 @@ import { Config } from "./config.js";
 import { MergeBundle } from "./merge-bundle.js";
 import extend from "just-extend";
 import ono from "@jsdevtools/ono";
-import { errorCaster } from "error-caster.js";
+import { errorCaster } from "../error-caster.js";
 
 /**
  * Merges a collection of configurations.

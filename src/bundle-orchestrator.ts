@@ -6,7 +6,7 @@ import extend from "just-extend";
 import { resolve as resolvePath } from "path";
 import PluginError from "plugin-error";
 import { BundleStreamFactory, Bundle, BundleType } from "./bundle.js";
-import { errorCaster } from "error-caster.js";
+import { errorCaster } from "./error-caster.js";
 
 const PluginName = "@userfrosting/gulp-bundle-assets";
 
