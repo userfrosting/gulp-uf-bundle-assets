@@ -1,9 +1,16 @@
 name: Continuous Integration
 on:
-  # Every push
+  # Main branch updated
   push:
+    branches:
+      - main
   # Pull request
   pull_request:
+    types:
+      # Newly opened
+      - opened
+      # Updated (excludes change of base branch)
+      - synchronize
 
 jobs:
   test:
