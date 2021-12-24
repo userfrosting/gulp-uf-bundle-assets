@@ -54,6 +54,9 @@ jobs:
 
   release-readiness:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2.5.0
