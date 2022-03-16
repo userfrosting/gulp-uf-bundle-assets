@@ -81,8 +81,10 @@ test("Multiple non-Vinyl chunks returned by bundle stream", async t => {
 
     await t.throwsAsync(
         () => bundle.feed(new Vinyl({ path: resolvePath("./test-1.js") })),
-        null,
-        "Non-Vinyl chunk returned by bundle stream for bundle 'test'"
+        {
+            message: "Non-Vinyl chunk returned by bundle stream for bundle 'test'",
+            instanceOf: Error,
+        },
     );
 });
 
@@ -99,7 +101,9 @@ test("Single non-Vinyl chunks returned by bundle stream", async t => {
 
     await t.throwsAsync(
         () => bundle.feed(new Vinyl({ path: resolvePath("./test-1.js") })),
-        null,
-        "Non-Vinyl chunk returned by bundle stream for bundle 'test'"
+        {
+            message: "Non-Vinyl chunk returned by bundle stream for bundle 'test'",
+            instanceOf: Error,
+        },
     );
 });
