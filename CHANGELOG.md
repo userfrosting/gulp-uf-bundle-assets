@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [5.0.3] - 2022-03-16
+
 ### Changed
 - All caught and forwarded errors will now be an instance of `Error`, if they were not already.
 - Error message emitted when non-Vinyl chunk is encountered has changed to fix a typo.
