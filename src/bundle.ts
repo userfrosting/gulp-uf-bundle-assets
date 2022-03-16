@@ -128,7 +128,7 @@ export class Bundle {
                             chunk,
                         }
                     );
-                    throw new Error(`Non-Vinyl chunk returned bu bundle stream for bundle '${this.name}'`);
+                    throw new Error(`Non-Vinyl chunk returned by bundle stream for bundle '${this.name}'`);
                 }
             }
 
