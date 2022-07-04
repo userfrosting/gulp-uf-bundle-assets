@@ -52,7 +52,7 @@
         "get-stream": "^6.0.0",
         "into-stream": "^7.0.0",
         "just-extend": "^6.0.1",
-        "plugin-error": "^1.0.1",
+        "plugin-error": "^2.0.0",
         "ts-log": "^2.2.3",
         "vinyl": "^2.2.0"
     },
