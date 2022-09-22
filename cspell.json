@@ -28,7 +28,9 @@
         "postversion",
         "preversion",
         "userfrosting",
-        "vpath"
+        "vpath",
+        "concat",
+        "sourcemaps"
     ],
     "ignorePaths": [
         "cspell.json",
