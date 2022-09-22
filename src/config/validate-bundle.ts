@@ -2,7 +2,7 @@ import { Bundle, CollisionReactions } from "./config.js";
 
 /**
  * Throws an exception if the provided bundle is invalid.
- * @param bundle Bundle to analyse.
+ * @param bundle Bundle to analyze.
  * @param name Name of bundle.
  */
 export function ValidateBundle(bundle: Bundle, name: string): void {
