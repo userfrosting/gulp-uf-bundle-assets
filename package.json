@@ -62,7 +62,7 @@
         "@types/node": "^18.7.18",
         "@types/vinyl": "^2.0.6",
         "@userfrosting/ts-log-adapter-ava": "^0.1.1",
-        "ava": "^4.3.3",
+        "ava": "^5.0.1",
         "c8": "^7.12.0",
         "changelog-updater": "^2.0.2",
         "cspell": "^6.10.1",
