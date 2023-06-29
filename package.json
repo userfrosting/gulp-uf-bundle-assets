@@ -56,7 +56,7 @@
     "devDependencies": {
         "@microsoft/api-documenter": "^7.19.14",
         "@microsoft/api-extractor": "^7.31.2",
-        "@types/node": "^20.1.0",
+        "@types/node": "^20.3.2",
         "@types/vinyl": "^2.0.6",
         "@userfrosting/ts-log-adapter-ava": "^0.1.1",
         "ava": "^5.0.1",
@@ -69,7 +69,7 @@
         "typescript": "^5.0.2"
     },
     "engines": {
-        "node": ">=14.0.0"
+        "node": ">=18.0.0"
     },
     "ava": {
         "files": [
