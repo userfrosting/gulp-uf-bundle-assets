@@ -1,8 +1,6 @@
 import { Config } from "./config.js";
-import { MergeBundle } from "./merge-bundle.js";
+import { mergeBundle } from "./merge-bundle.js";
 import extend from "just-extend";
-import ono from "@jsdevtools/ono";
-import { errorCaster } from "../error-caster.js";
 
 /**
  * Merges a collection of configurations.
@@ -12,7 +10,7 @@ import { errorCaster } from "../error-caster.js";
  * @param rawConfigs - Raw (untransformed) configurations to merge.
  * @public
  */
-export function MergeConfigs(rawConfigs: Config[]): Config {
+export function mergeConfigs(rawConfigs: Config[]): Config {
     // No point doing processing if we've got only 1 item
     if (rawConfigs.length === 1) return rawConfigs[0];
 
@@ -33,10 +31,13 @@ export function MergeConfigs(rawConfigs: Config[]): Config {
                 // Conduct merge if already defined on nextConfig
                 if (nextConfig.bundle.hasOwnProperty(bundleName)) {
                     try {
-                        nextConfig.bundle[bundleName] = MergeBundle(outConfig.bundle[bundleName], nextConfig.bundle[bundleName]);
+                        nextConfig.bundle[bundleName] = mergeBundle(outConfig.bundle[bundleName], nextConfig.bundle[bundleName]);
                     }
                     catch (e) {
-                        throw ono(errorCaster(e), `Exception raised while merging bundle '${bundleName}' in the raw configuration at index '${rawConfigs.indexOf(config)}'.`);
+                        throw new Error(
+                            `Exception raised while merging bundle '${bundleName}' in the raw configuration at index '${rawConfigs.indexOf(config)}'.`,
+                            { cause: e },
+                        );
                     }
                 }
                 // Otherwise just set it

@@ -6,7 +6,7 @@ import extend from "just-extend";
  * @param existingBundle Bundle to merge into.
  * @param nextBundle Bundle bringing new content.
  */
-export function MergeBundle(existingBundle: Bundle, nextBundle: Bundle): Bundle {
+export function mergeBundle(existingBundle: Bundle, nextBundle: Bundle): Bundle {
     // Determine collision resolution strategy
     let collisionReaction = CollisionReactions.replace;
 

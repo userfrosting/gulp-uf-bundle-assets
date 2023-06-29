@@ -1,12 +1,12 @@
 import test from "ava";
-import { ValidateConfig } from "./validate-config.js";
+import { validateConfig } from "./validate-config.js";
 import { Config } from "./config.js";
 
 /**
  * Should complete without throwing.
  */
 test("Empty object", t => {
-	t.notThrows(() => ValidateConfig({}));
+	t.notThrows(() => validateConfig({}));
 });
 
 /**
@@ -18,7 +18,7 @@ test("Empty object bundle property", t => {
             foo: {}
         }
 	}
-	t.notThrows(() => ValidateConfig(config));
+	t.notThrows(() => validateConfig(config));
 });
 
 /**
@@ -28,7 +28,7 @@ test("Valid bundle property", t => {
 	const config: Config = {
 		bundle: {}
 	}
-	t.notThrows(() => ValidateConfig(config));
+	t.notThrows(() => validateConfig(config));
 });
 
 /**
@@ -39,7 +39,7 @@ test("Non-object bundle property", t => {
 		bundle: "a string"
 	}
 	t.throws(
-        () => ValidateConfig(config),
+        () => validateConfig(config),
         {
             instanceOf: TypeError,
             message: `Property "bundle" must be an object and not null.`,

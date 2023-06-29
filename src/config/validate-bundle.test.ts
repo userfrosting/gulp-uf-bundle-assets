@@ -1,12 +1,12 @@
 import test from "ava";
 import { Bundle, CollisionReactions } from "./config.js";
-import { ValidateBundle } from "./validate-bundle.js";
+import { validateBundle } from "./validate-bundle.js";
 
 /**
  * Should complete without throwing.
  */
 test("Empty object", t => {
-    t.notThrows(() => ValidateBundle({}, "test"));
+    t.notThrows(() => validateBundle({}, "test"));
 });
 
 /**
@@ -15,7 +15,7 @@ test("Empty object", t => {
 test("Non-object bundle", t => {
     const bundle: any = "a string";
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "Property bundle>test must be an object and not null.",
@@ -29,7 +29,7 @@ test("Non-object bundle", t => {
 test("Non-string bundle name", t => {
     const bundleName: any = 22;
     t.throws(
-        () => ValidateBundle({}, bundleName),
+        () => validateBundle({}, bundleName),
         {
             instanceOf: TypeError,
             message: "Bundle name must be a string.",
@@ -45,7 +45,7 @@ test("Non-array for scripts", t => {
         scripts: "a string"
     };
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "Property bundle>test>scripts must be an array.",
@@ -65,7 +65,7 @@ test("Array containing non-strings for scripts", t => {
         ]
     };
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "All indexes of bundle>test>scripts must be a string.",
@@ -83,7 +83,7 @@ test("Valid array for scripts", t => {
             "bar.js"
         ]
     };
-    t.notThrows(() => ValidateBundle(bundle, "test"));
+    t.notThrows(() => validateBundle(bundle, "test"));
 });
 
 /**
@@ -94,7 +94,7 @@ test("Non-array for styles", t => {
         styles: "a string"
     };
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "Property bundle>test>styles must be an array.",
@@ -114,7 +114,7 @@ test("Array containing non-strings for styles", t => {
         ]
     };
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "All indexes of bundle>test>styles must be a string.",
@@ -132,7 +132,7 @@ test("Valid array for styles", t => {
             "bar.css"
         ]
     };
-    t.notThrows(() => ValidateBundle(bundle, "test"));
+    t.notThrows(() => validateBundle(bundle, "test"));
 });
 
 /**
@@ -143,7 +143,7 @@ test("Non-object for options", t => {
         options: 22
     };
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "Property bundle>test>options must be an object and not null.",
@@ -161,7 +161,7 @@ test("Non-object for options>sprinkle", t => {
         }
     };
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "Property bundle>test>options>sprinkle must be an object and not null.",
@@ -174,7 +174,7 @@ test("Non-object for options>sprinkle", t => {
  */
 test("Nothing for options>sprinkle", t => {
     const bundle: Bundle = { options: {} };
-    t.notThrows(() => ValidateBundle(bundle, "test"));
+    t.notThrows(() => validateBundle(bundle, "test"));
 });
 
 /**
@@ -188,24 +188,24 @@ test("All possible collision rules", t => {
             sprinkle: {}
         }
     };
-    t.notThrows(() => ValidateBundle(bundle, "test"));
+    t.notThrows(() => validateBundle(bundle, "test"));
     // replace
     bundle!.options!.sprinkle!.onCollision = "replace";
-    t.notThrows(() => ValidateBundle(bundle, "test"));
+    t.notThrows(() => validateBundle(bundle, "test"));
     // merge
     bundle!.options!.sprinkle!.onCollision = "merge";
-    t.notThrows(() => ValidateBundle(bundle, "test"));
+    t.notThrows(() => validateBundle(bundle, "test"));
     // error
     bundle!.options!.sprinkle!.onCollision = "error";
-    t.notThrows(() => ValidateBundle(bundle, "test"));
+    t.notThrows(() => validateBundle(bundle, "test"));
     // ignore
     bundle!.options!.sprinkle!.onCollision = "ignore";
-    t.notThrows(() => ValidateBundle(bundle, "test"));
+    t.notThrows(() => validateBundle(bundle, "test"));
 
     // Bad
     bundle!.options!.sprinkle!.onCollision = "an invalid collision reaction" as keyof typeof CollisionReactions;
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "Property bundle>test>options>sprinkle>onCollision must be a valid rule.",
@@ -227,7 +227,7 @@ test("Non-string for options>sprinkle>onCollision", t => {
         }
     };
     t.throws(
-        () => ValidateBundle(bundle, "test"),
+        () => validateBundle(bundle, "test"),
         {
             instanceOf: TypeError,
             message: "Property bundle>test>options>sprinkle>onCollision must be a string.",

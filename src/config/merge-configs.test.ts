@@ -1,26 +1,26 @@
 import test from "ava";
-import { MergeConfigs } from "./merge-configs.js";
+import { mergeConfigs } from "./merge-configs.js";
 import { Config, CollisionReactions } from "./config.js";
 
 /**
  * Should return empty object.
  */
 test("Single empty object", t => {
-	t.deepEqual(MergeConfigs([{}]), {});
+	t.deepEqual(mergeConfigs([{}]), {});
 });
 
 /**
  * Should return empty object.
  */
 test("Multiple empty objects", t => {
-	t.deepEqual(MergeConfigs([{}, {}, {}]), {});
+	t.deepEqual(mergeConfigs([{}, {}, {}]), {});
 });
 
 /**
  * Should return object with empty bundle key.
  */
 test("First object with bundle property and second object empty", t => {
-	t.deepEqual(MergeConfigs([{ bundle: {}}, {}]), { bundle: {}});
+	t.deepEqual(mergeConfigs([{ bundle: {}}, {}]), { bundle: {}});
 });
 
 /**
@@ -46,7 +46,7 @@ test("Single object", t => {
 		}
 	};
 
-	t.deepEqual(MergeConfigs([config]), expected);
+	t.deepEqual(mergeConfigs([config]), expected);
 });
 
 /**
@@ -96,7 +96,7 @@ test("Multiple objects", t => {
 		}
 	};
 
-	t.deepEqual(MergeConfigs([config1, config2, config3]), expected);
+	t.deepEqual(mergeConfigs([config1, config2, config3]), expected);
 });
 
 /**
@@ -127,14 +127,17 @@ test("Colliding bundle with invalid collision rule on incoming bundle", t => {
 		}
 	};
 
-	t.throws(
-        () => MergeConfigs([config1, config2]),
-        {
-            instanceOf: RangeError,
-            message: "Exception raised while merging bundle 'testBundle' in the raw configuration at index '1'. \n"
-                + "Unexpected input 'badCollisionHandler' for 'onCollision' option of next bundle.",
-        }
-    );
+	try {
+		mergeConfigs([config1, config2])
+		t.fail("No error thrown.");
+	} catch (e) {
+		const err = e as Error;
+		t.true(err instanceof Error);
+		t.is(err.message, "Exception raised while merging bundle 'testBundle' in the raw configuration at index '1'.");
+		const cause = err.cause as Error;
+		t.true(cause instanceof RangeError);
+		t.is(cause.message, "Unexpected input 'badCollisionHandler' for 'onCollision' option of next bundle.");
+	}
 });
 
 /**
@@ -165,5 +168,5 @@ test("Colliding bundle with invalid collision rule on target bundle", t => {
 		}
 	};
 
-	t.notThrows(() => MergeConfigs([input1, input2]));
+	t.notThrows(() => mergeConfigs([input1, input2]));
 });

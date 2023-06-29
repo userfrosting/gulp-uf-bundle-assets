@@ -1,22 +1,18 @@
 {
     "$schema": "http://json.schemastore.org/tsconfig",
     "compilerOptions": {
-        "module": "es2015",
-        "moduleResolution": "node",
+        "module": "Node16",
+        "moduleResolution": "Node16",
         "lib": [
-            "es2015"
+            "es2022"
         ],
         "allowSyntheticDefaultImports": true,
         "noEmitHelpers": true,
         "declaration": true,
-        "target": "es2017",
+        "target": "es2022",
         "outDir": "./dist/",
+        "rootDir": "./src/",
         "sourceMap": true,
-        "strict": true,
-        // TODO Remove once self-referencing supported https://github.com/microsoft/TypeScript/issues/38675
-        "baseUrl": "./src/",
-        "paths": {
-            "@userfrosting/gulp-bundle-assets": [ "./main" ]
-        }
+        "strict": true
     }
 }

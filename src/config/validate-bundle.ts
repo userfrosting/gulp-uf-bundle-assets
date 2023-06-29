@@ -5,7 +5,7 @@ import { Bundle, CollisionReactions } from "./config.js";
  * @param bundle Bundle to analyze.
  * @param name Name of bundle.
  */
-export function ValidateBundle(bundle: Bundle, name: string): void {
+export function validateBundle(bundle: Bundle, name: string): void {
     if (typeof name !== "string")
         throw new TypeError("Bundle name must be a string.");
 

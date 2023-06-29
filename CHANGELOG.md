@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - Raised minimum NodeJS version from 12.17.0 to 18.
+- Default export removed. Use named export `BundleOrchestrator`.
+- Export `MergeRawConfigs` renamed to `mergeConfigs`.
+- Export `ValidateRawConfig` renamed to `validateConfig`.
+- [`Error.cause`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause) is now used, some thrown errors may be of a different type or have a simpler message.
 
 ## [5.0.3] - 2022-03-16
 
