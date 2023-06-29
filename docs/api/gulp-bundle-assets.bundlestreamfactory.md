@@ -6,7 +6,7 @@
 
 A function that returns a stream that will be used to bundle assets.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface BundleStreamFactory 

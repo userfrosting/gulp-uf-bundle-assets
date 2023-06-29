@@ -6,7 +6,7 @@
 
 Represents an asset bundle
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface Bundle 
@@ -14,9 +14,9 @@ export interface Bundle
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [options?](./gulp-bundle-assets.bundle.options.md) | [Options](./gulp-bundle-assets.options.md) | <i>(Optional)</i> |
-|  [scripts?](./gulp-bundle-assets.bundle.scripts.md) | string\[\] | <i>(Optional)</i> |
-|  [styles?](./gulp-bundle-assets.bundle.styles.md) | string\[\] | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [options?](./gulp-bundle-assets.bundle.options.md) |  | [Options](./gulp-bundle-assets.options.md) | _(Optional)_ |
+|  [scripts?](./gulp-bundle-assets.bundle.scripts.md) |  | string\[\] | _(Optional)_ |
+|  [styles?](./gulp-bundle-assets.bundle.styles.md) |  | string\[\] | _(Optional)_ |
 

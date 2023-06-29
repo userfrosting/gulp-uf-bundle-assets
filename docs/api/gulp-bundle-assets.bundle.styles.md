@@ -4,7 +4,7 @@
 
 ## Bundle.styles property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 styles?: string[];

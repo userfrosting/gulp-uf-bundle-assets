@@ -6,7 +6,7 @@
 
 Current working directory to use when resolving the full paths of bundle dependencies. Defaults to `process.cwd()`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 cwd?: string;

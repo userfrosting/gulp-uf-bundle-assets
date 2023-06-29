@@ -6,12 +6,12 @@
 
 Orchestrates bundling.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare class BundleOrchestrator extends Transform 
 ```
-<b>Extends:</b> Transform
+**Extends:** Transform
 
 ## Constructors
 

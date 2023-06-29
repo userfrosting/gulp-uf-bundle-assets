@@ -6,7 +6,7 @@
 
 Bundle definitions.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bundle?: Bundles;

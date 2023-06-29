@@ -6,7 +6,7 @@
 
 Options relevant to UserFrosting's Sprinkle system.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface SprinkleOptions 
@@ -14,7 +14,7 @@ export interface SprinkleOptions
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [onCollision?](./gulp-bundle-assets.sprinkleoptions.oncollision.md) | keyof typeof [CollisionReactions](./gulp-bundle-assets.collisionreactions.md) | <i>(Optional)</i> How a bundle collision should be handled when bundles are being merged. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [onCollision?](./gulp-bundle-assets.sprinkleoptions.oncollision.md) |  | keyof typeof [CollisionReactions](./gulp-bundle-assets.collisionreactions.md) | _(Optional)_ How a bundle collision should be handled when bundles are being merged. |
 

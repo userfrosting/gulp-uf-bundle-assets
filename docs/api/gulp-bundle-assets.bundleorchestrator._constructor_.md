@@ -6,7 +6,7 @@
 
 Constructs a new instance of the `BundleOrchestrator` class
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 constructor(config: Config, joiner: Bundlers, resultsCallback?: ResultsCallback);
@@ -18,5 +18,5 @@ constructor(config: Config, joiner: Bundlers, resultsCallback?: ResultsCallback)
 |  --- | --- | --- |
 |  config | [Config](./gulp-bundle-assets.config.md) | Raw (but valid) configuration file used for bundle resolution. |
 |  joiner | [Bundlers](./gulp-bundle-assets.bundlers.md) | Object capable of generating the Transform streams needed for generation of final bundles. |
-|  resultsCallback | [ResultsCallback](./gulp-bundle-assets.resultscallback.md) | Callback invoked once all bundles generated. |
+|  resultsCallback | [ResultsCallback](./gulp-bundle-assets.resultscallback.md) | _(Optional)_ Callback invoked once all bundles generated. |
 

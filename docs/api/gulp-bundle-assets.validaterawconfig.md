@@ -6,7 +6,7 @@
 
 Throws an exception if the provided raw config contains invalid data.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function ValidateConfig(config: Config): void;
@@ -18,7 +18,7 @@ export declare function ValidateConfig(config: Config): void;
 |  --- | --- | --- |
 |  config | [Config](./gulp-bundle-assets.config.md) | Raw configuration to validate. |
 
-<b>Returns:</b>
+**Returns:**
 
 void
 

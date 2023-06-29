@@ -4,7 +4,7 @@
 
 ## Results.scripts property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scripts: Map<string, Vinyl[]>;

@@ -6,7 +6,7 @@
 
 Interface defining factories required to bundle styles and scripts.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface Bundlers 
@@ -14,8 +14,8 @@ export interface Bundlers
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [Scripts](./gulp-bundle-assets.bundlers.scripts.md) | [BundleStreamFactory](./gulp-bundle-assets.bundlestreamfactory.md) | Returns a Transform that will handle bundling of script resources. |
-|  [Styles](./gulp-bundle-assets.bundlers.styles.md) | [BundleStreamFactory](./gulp-bundle-assets.bundlestreamfactory.md) | Returns a Transform that will handle bundling of style resources. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [Scripts](./gulp-bundle-assets.bundlers.scripts.md) |  | [BundleStreamFactory](./gulp-bundle-assets.bundlestreamfactory.md) | Returns a Transform that will handle bundling of script resources. |
+|  [Styles](./gulp-bundle-assets.bundlers.styles.md) |  | [BundleStreamFactory](./gulp-bundle-assets.bundlestreamfactory.md) | Returns a Transform that will handle bundling of style resources. |
 

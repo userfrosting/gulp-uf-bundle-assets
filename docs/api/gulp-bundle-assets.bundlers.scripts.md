@@ -6,7 +6,7 @@
 
 Returns a Transform that will handle bundling of script resources.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 Scripts: BundleStreamFactory;

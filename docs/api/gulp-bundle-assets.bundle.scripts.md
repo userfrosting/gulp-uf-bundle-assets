@@ -4,7 +4,7 @@
 
 ## Bundle.scripts property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 scripts?: string[];

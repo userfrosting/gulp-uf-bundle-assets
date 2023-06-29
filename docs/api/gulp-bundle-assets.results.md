@@ -6,7 +6,7 @@
 
 Bundler results data shape.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface Results 
@@ -14,8 +14,8 @@ export interface Results
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [scripts](./gulp-bundle-assets.results.scripts.md) | Map&lt;string, Vinyl\[\]&gt; |  |
-|  [styles](./gulp-bundle-assets.results.styles.md) | Map&lt;string, Vinyl\[\]&gt; |  |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [scripts](./gulp-bundle-assets.results.scripts.md) |  | Map&lt;string, Vinyl\[\]&gt; |  |
+|  [styles](./gulp-bundle-assets.results.styles.md) |  | Map&lt;string, Vinyl\[\]&gt; |  |
 

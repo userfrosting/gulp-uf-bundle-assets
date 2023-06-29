@@ -8,7 +8,7 @@ Merges a collection of configurations. No validation is conducted, it is expecte
 
 `bundle->(BundleName)->options->sprinkle->onCollision = (replace|merge|ignore|error)` may be used to modify treatment of collided bundles.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare function MergeConfigs(rawConfigs: Config[]): Config;
@@ -20,7 +20,7 @@ export declare function MergeConfigs(rawConfigs: Config[]): Config;
 |  --- | --- | --- |
 |  rawConfigs | [Config](./gulp-bundle-assets.config.md)<!-- -->\[\] | Raw (untransformed) configurations to merge. |
 
-<b>Returns:</b>
+**Returns:**
 
 [Config](./gulp-bundle-assets.config.md)
 

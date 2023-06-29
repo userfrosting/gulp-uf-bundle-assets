@@ -6,7 +6,7 @@
 
 How a bundle collision should be handled when bundles are being merged.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 onCollision?: keyof typeof CollisionReactions;

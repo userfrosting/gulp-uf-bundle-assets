@@ -4,7 +4,7 @@
 
 ## Options.sprinkle property
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sprinkle?: SprinkleOptions;

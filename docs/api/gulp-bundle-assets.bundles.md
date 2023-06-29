@@ -6,7 +6,7 @@
 
 Map of bundles.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface Bundles 

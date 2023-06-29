@@ -4,7 +4,7 @@
 
 ## BundleOrchestrator.\_flush() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 _flush(callback: TransformCallback): Promise<void>;
@@ -16,7 +16,7 @@ _flush(callback: TransformCallback): Promise<void>;
 |  --- | --- | --- |
 |  callback | TransformCallback |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;void&gt;
 

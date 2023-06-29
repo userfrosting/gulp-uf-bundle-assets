@@ -6,7 +6,7 @@
 
 Bundler results callback function interface.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface ResultsCallback 

@@ -6,7 +6,7 @@
 
 Root object of raw configuration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface Config 
@@ -14,9 +14,9 @@ export interface Config
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [bundle?](./gulp-bundle-assets.config.bundle.md) | [Bundles](./gulp-bundle-assets.bundles.md) | <i>(Optional)</i> Bundle definitions. |
-|  [cwd?](./gulp-bundle-assets.config.cwd.md) | string | <i>(Optional)</i> Current working directory to use when resolving the full paths of bundle dependencies. Defaults to <code>process.cwd()</code>. |
-|  [Logger?](./gulp-bundle-assets.config.logger.md) | TsLog.Logger | <i>(Optional)</i> Optional logger that will be used throughout bundling process. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [bundle?](./gulp-bundle-assets.config.bundle.md) |  | [Bundles](./gulp-bundle-assets.bundles.md) | _(Optional)_ Bundle definitions. |
+|  [cwd?](./gulp-bundle-assets.config.cwd.md) |  | string | _(Optional)_ Current working directory to use when resolving the full paths of bundle dependencies. Defaults to <code>process.cwd()</code>. |
+|  [Logger?](./gulp-bundle-assets.config.logger.md) |  | TsLog.Logger | _(Optional)_ Optional logger that will be used throughout bundling process. |
 

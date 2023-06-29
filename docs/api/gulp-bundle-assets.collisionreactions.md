@@ -6,7 +6,7 @@
 
 Rules for how a bundle collision may be treated.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare enum CollisionReactions 

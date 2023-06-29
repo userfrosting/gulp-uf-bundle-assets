@@ -6,7 +6,7 @@
 
 Represents an asset bundles root options node.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface Options 
@@ -14,7 +14,7 @@ export interface Options
 
 ## Properties
 
-|  Property | Type | Description |
-|  --- | --- | --- |
-|  [sprinkle?](./gulp-bundle-assets.options.sprinkle.md) | [SprinkleOptions](./gulp-bundle-assets.sprinkleoptions.md) | <i>(Optional)</i> |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [sprinkle?](./gulp-bundle-assets.options.sprinkle.md) |  | [SprinkleOptions](./gulp-bundle-assets.sprinkleoptions.md) | _(Optional)_ |
 

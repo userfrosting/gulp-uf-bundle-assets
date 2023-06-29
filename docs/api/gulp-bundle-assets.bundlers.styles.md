@@ -6,7 +6,7 @@
 
 Returns a Transform that will handle bundling of style resources.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 Styles: BundleStreamFactory;

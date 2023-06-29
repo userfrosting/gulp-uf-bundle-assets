@@ -6,7 +6,7 @@
 
 Optional logger that will be used throughout bundling process.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 Logger?: TsLog.Logger;

@@ -6,7 +6,7 @@
 
 Collects copies of applicable files to later bundle.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): Promise<void>;
@@ -20,7 +20,7 @@ _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): P
 |  encoding | BufferEncoding | Encoding of chunk, if applicable. |
 |  callback | TransformCallback | Callback to indicate processing is completed. |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;void&gt;
 
