@@ -21,7 +21,7 @@ export function MergeConfigs(rawConfigs: Config[]): Config {
     // Merge configs into base
     rawConfigs.forEach(config => {
         // Prevent modification of input
-        let nextConfig = extend(true, {}, config);
+        let nextConfig = structuredClone(config);
 
         // Merge all bundle definitions into nextConfig (to handle collision logic correctly)
         if (outConfig.bundle) {

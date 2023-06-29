@@ -2,7 +2,6 @@ import Vinyl from "vinyl";
 import { Transform, TransformCallback } from "stream";
 import TsLog from "ts-log";
 import { Config } from "./config/config.js";
-import extend from "just-extend";
 import { resolve as resolvePath } from "path";
 import PluginError from "plugin-error";
 import { BundleStreamFactory, Bundle, BundleType } from "./bundle.js";
@@ -149,7 +148,7 @@ export class BundleOrchestrator extends Transform {
         }
 
         // Deep clone config object to prevent mutations from spilling out
-        config = extend(true, {}, config);
+        config = structuredClone(config);
 
         // Current working directory
         const cwd = config.cwd ?? process.cwd();
