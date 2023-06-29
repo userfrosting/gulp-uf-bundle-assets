@@ -2,18 +2,12 @@
 
 ## Getting Started
 
-To start, you'll need NodeJS 14 or [Lando](https://lando.dev/) installed (prefix commands with `lando`).
+To start, you'll need NodeJS 14 and pnpm.
 
-The development and release process heavily lean into common NPM scripts, the only commands you need to care about are;
+The development and release process heavily lean into common package scripts, the only commands you need to care about are;
 
-- `npm i` to install dependencies.
-- `npm test` to run tests.
-- `npm version ...` to create a new version.
-- `npm publish` to publish.
-
-The sole exception is the release readiness check. This is run automatically by the CI, and can be run locally with;
-
-- `npm run release-readiness`
+- `pnpm run compile` to build.
+- `pnpm test` to run tests.
 
 ## API Documentation
 
@@ -26,10 +20,9 @@ Generation occurs automatically when `pnpm version` is run.
 Generally speaking, all releases should first traverse through `alpha`, `beta`, and `rc` (release candidate) to catch missed bugs and gather feedback as appropriate. Aside from this however, there are a few steps that **MUST** always be done.
 
 1. Make sure [`CHANGELOG.md`](./CHANGELOG.md) is up to date.
-2. Update version via `npm` like `npm version 3.0.0` or `npm version patch`.
-3. `npm publish`.
-4. Create release on GitHub from tag made by `npm version`.
-
-## Lando
-
-A [Lando](https://lando.dev/) configuration is included in this repo. 
+2. Update `version` in `package.json`.
+3. `pnpm run stamp-version`
+4. Commit changes.
+5. `git tag v${version}`
+6. `pnpm publish`
+7. Create release on GitHub from tag made by `npm version`.

@@ -24,33 +24,18 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci --ignore-scripts
-    - run: ./node_modules/.bin/c8 --reporter=lcovonly npm test
-    - uses: codecov/codecov-action@v3.1.4
-      with:
-        token: ${{ secrets.CODECOV_UPLOAD_TOKEN }}
-
-  pnpm-check:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: ^16.0.0
     - uses: actions/cache@v3
-      env:
-        cache-name: cache-pnpm-modules
       with:
         path: ~/.pnpm-store
-        key: pnpm-check-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
-        restore-keys: pnpm-check-${{ env.cache-name }}-
+        key: pnpm-store+${{matrix.platform}}+${{matrix.node-version}}+${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: pnpm-store+${{matrix.platform}}+
     - uses: pnpm/action-setup@v2.2.4
       with:
         version: ^7.12.1
-        run_install: |
-          - args: [--ignore-scripts]
+        run_install: true
     - run: pnpm run compile
-    - run: pnpm test
+    - run: ./node_modules/.bin/c8 --reporter=lcovonly pnpm test
+    - uses: codecov/codecov-action@v3.1.4
 
   release-readiness:
     runs-on: ubuntu-latest
@@ -62,11 +47,19 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: ^16.0.0
-    - run: npm ci
-    - run: npm run release-readiness
+    - uses: actions/cache@v3
+      with:
+        path: ~/.pnpm-store
+        key: pnpm-store+ubuntu-latest+^16.0.0+${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: pnpm-store+ubuntu-latest+
+    - uses: pnpm/action-setup@v2.2.4
+      with:
+        version: ^7.12.1
+        run_install: true
+    - run: pnpm run release-readiness
 
   dependabot-approveOrMerge:
-    needs: [test, pnpm-check, release-readiness]
+    needs: [test, release-readiness]
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
