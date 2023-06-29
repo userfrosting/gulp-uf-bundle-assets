@@ -4,7 +4,7 @@ specifiers:
   '@jsdevtools/ono': ^7.1.3
   '@microsoft/api-documenter': ^7.19.14
   '@microsoft/api-extractor': ^7.31.2
-  '@types/node': ^20.1.0
+  '@types/node': ^20.3.2
   '@types/vinyl': ^2.0.6
   '@userfrosting/ts-log-adapter-ava': ^0.1.1
   ava: ^5.0.1
@@ -32,9 +32,9 @@ dependencies:
   vinyl: 3.0.0
 
 devDependencies:
-  '@microsoft/api-documenter': 7.22.21_@types+node@20.3.1
-  '@microsoft/api-extractor': 7.36.0_@types+node@20.3.1
-  '@types/node': 20.3.1
+  '@microsoft/api-documenter': 7.22.21_@types+node@20.3.2
+  '@microsoft/api-extractor': 7.36.0_@types+node@20.3.2
+  '@types/node': 20.3.2
   '@types/vinyl': 2.0.7
   '@userfrosting/ts-log-adapter-ava': 0.1.1
   ava: 5.3.1
@@ -361,13 +361,13 @@ packages:
     resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
     dev: false
 
-  /@microsoft/api-documenter/7.22.21_@types+node@20.3.1:
+  /@microsoft/api-documenter/7.22.21_@types+node@20.3.2:
     resolution: {integrity: sha512-o8VXpB83P87cLIYfkQS7ibShoYorTZ7Xs+gMwftT75pFaYWwhBuI8M0MPgzTGIAxzi338XfUjhctlVCjRn+Sqg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.3_@types+node@20.3.1
+      '@microsoft/api-extractor-model': 7.27.3_@types+node@20.3.2
       '@microsoft/tsdoc': 0.14.2
-      '@rushstack/node-core-library': 3.59.4_@types+node@20.3.1
+      '@rushstack/node-core-library': 3.59.4_@types+node@20.3.2
       '@rushstack/ts-command-line': 4.15.1
       colors: 1.2.5
       js-yaml: 3.13.1
@@ -376,24 +376,24 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor-model/7.27.3_@types+node@20.3.1:
+  /@microsoft/api-extractor-model/7.27.3_@types+node@20.3.2:
     resolution: {integrity: sha512-fSFvw7otYHduOkyshjTbapKKgwF8bgquVHvgF8VgeKtMYvqXkoaj7W6VcM7PNY7E2bbblhUgC4XNdqZLD4SJGw==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.4_@types+node@20.3.1
+      '@rushstack/node-core-library': 3.59.4_@types+node@20.3.2
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor/7.36.0_@types+node@20.3.1:
+  /@microsoft/api-extractor/7.36.0_@types+node@20.3.2:
     resolution: {integrity: sha512-P+kYgJFDXIr+UNzhRMhlpM/dderi6ab4lxn35vdhfAIMPtGCSXIJxrrtpTOQmQW8CZtmoZX06LYoUsKCc1zjow==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.3_@types+node@20.3.1
+      '@microsoft/api-extractor-model': 7.27.3_@types+node@20.3.2
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.4_@types+node@20.3.1
+      '@rushstack/node-core-library': 3.59.4_@types+node@20.3.2
       '@rushstack/rig-package': 0.4.0
       '@rushstack/ts-command-line': 4.15.1
       colors: 1.2.5
@@ -440,7 +440,7 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@rushstack/node-core-library/3.59.4_@types+node@20.3.1:
+  /@rushstack/node-core-library/3.59.4_@types+node@20.3.2:
     resolution: {integrity: sha512-YAKJDC6Mz/KA1D7bvB88WaRX3knt/ZuLzkRu5G9QADGSjLtvTWzCNCytRF2PCSaaHOZaZsWul4F1KQdgFgUDqA==}
     peerDependencies:
       '@types/node': '*'
@@ -448,7 +448,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 20.3.1
+      '@types/node': 20.3.2
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -490,8 +490,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/20.3.1:
-    resolution: {integrity: sha512-EhcH/wvidPy1WeML3TtYFGR83UzjxeWRen9V402T8aUGYsCHOmfoisV3ZSg03gAFIbLq8TnWOJ0f4cALtnSEUg==}
+  /@types/node/20.3.2:
+    resolution: {integrity: sha512-vOBLVQeCQfIcF/2Y7eKFTqrMnizK5lRNQ7ykML/5RuwVXVWxYkgwS7xbt4B6fKCUPgbSL5FSsjHQpaGQP/dQmw==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -502,7 +502,7 @@ packages:
     resolution: {integrity: sha512-4UqPv+2567NhMQuMLdKAyK4yzrfCqwaTt6bLhHEs8PFcxbHILsrxaY63n4wgE/BRLDWDQeI+WcTmkXKExh9hQg==}
     dependencies:
       '@types/expect': 1.20.4
-      '@types/node': 20.3.1
+      '@types/node': 20.3.2
     dev: true
 
   /@userfrosting/ts-log-adapter-ava/0.1.1:
