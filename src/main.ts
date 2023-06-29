@@ -1,14 +1,13 @@
-export { MergeConfigs as MergeRawConfigs } from "./config/merge-configs.js";
-export { ValidateConfig as ValidateRawConfig } from "./config/validate-config.js";
+export { mergeConfigs } from "./config/merge-configs.js";
+export { validateConfig } from "./config/validate-config.js";
 export {
-    BundleOrchestrator as default,
     BundleOrchestrator,
-    Bundlers,
-    Results,
-    ResultsCallback,
+    type Bundlers,
+    type Results,
+    type ResultsCallback,
 } from "./bundle-orchestrator.js";
-export { BundleStreamFactory } from "./bundle";
-export {
+export type { BundleStreamFactory } from "./bundle.js";
+export type {
     Bundle,
     Bundles,
     CollisionReactions,

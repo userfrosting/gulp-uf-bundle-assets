@@ -20,7 +20,7 @@ npm i -D  @userfrosting/gulp-bundle-assets
 
 ```js
 // gulpfile.mjs
-import AssetBundler from "@userfrosting/gulp-bundle-assets";
+import { BundleOrchestrator } from "@userfrosting/gulp-bundle-assets";
 import Gulp from "gulp";
 import cleanCss from "gulp-clean-css";
 import concatCss from "gulp-concat-css";
@@ -56,7 +56,7 @@ export function bundle() {
     };
 
     return Gulp.src("src/**")
-        .pipe(new AssetBundler(config, joiner))
+        .pipe(new BundleOrchestrator(config, joiner))
         .pipe(Gulp.dest("public/assets/"));
 }
 ```

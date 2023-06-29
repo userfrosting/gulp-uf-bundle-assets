@@ -20,8 +20,8 @@
 
 |  Function | Description |
 |  --- | --- |
-|  [MergeRawConfigs(rawConfigs)](./gulp-bundle-assets.mergerawconfigs.md) | <p>Merges a collection of configurations. No validation is conducted, it is expected that provided inputs are all valid.</p><p><code>bundle-&gt;(BundleName)-&gt;options-&gt;sprinkle-&gt;onCollision = (replace&#124;merge&#124;ignore&#124;error)</code> may be used to modify treatment of collided bundles.</p> |
-|  [ValidateRawConfig(config)](./gulp-bundle-assets.validaterawconfig.md) | Throws an exception if the provided raw config contains invalid data. |
+|  [mergeConfigs(rawConfigs)](./gulp-bundle-assets.mergeconfigs.md) | <p>Merges a collection of configurations. No validation is conducted, it is expected that provided inputs are all valid.</p><p><code>bundle-&gt;(BundleName)-&gt;options-&gt;sprinkle-&gt;onCollision = (replace&#124;merge&#124;ignore&#124;error)</code> may be used to modify treatment of collided bundles.</p> |
+|  [validateConfig(config)](./gulp-bundle-assets.validateconfig.md) | Throws an exception if the provided raw config contains invalid data. |
 
 ## Interfaces
 

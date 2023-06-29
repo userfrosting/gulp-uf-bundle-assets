@@ -1,5 +1,5 @@
 import test from "ava";
-import { MergeBundle } from "./merge-bundle.js";
+import { mergeBundle } from "./merge-bundle.js";
 import { Bundle } from "./config.js";
 
 /**
@@ -9,7 +9,7 @@ test("Empty objects", t => {
     const existingBundle: Bundle = {};
     const nextBundle: Bundle = {};
     const output: Bundle = {};
-    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+    t.deepEqual(mergeBundle(existingBundle, nextBundle), output);
 });
 
 /**
@@ -36,7 +36,7 @@ test("No collision rule set", t => {
             "zeta.js"
         ]
     };
-    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+    t.deepEqual(mergeBundle(existingBundle, nextBundle), output);
 });
 
 /**
@@ -76,7 +76,7 @@ test("Collision rule set to replace.", t => {
             }
         }
     };
-    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+    t.deepEqual(mergeBundle(existingBundle, nextBundle), output);
 });
 
 /**
@@ -118,7 +118,7 @@ test("Collision rule set to merge without duplicate resources", t => {
             }
         }
     };
-    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+    t.deepEqual(mergeBundle(existingBundle, nextBundle), output);
 });
 
 /**
@@ -164,7 +164,7 @@ test("Collision rule set to merge with duplicate resources", t => {
             }
         }
     };
-    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+    t.deepEqual(mergeBundle(existingBundle, nextBundle), output);
 });
 
 /**
@@ -197,7 +197,7 @@ test("Collision rule set to merge with empty target bundle", t => {
             }
         }
     };
-    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+    t.deepEqual(mergeBundle(existingBundle, nextBundle), output);
 });
 
 /**
@@ -228,7 +228,7 @@ test("Collision rules set to ignore", t => {
             "foo.js"
         ]
     };
-    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+    t.deepEqual(mergeBundle(existingBundle, nextBundle), output);
 });
 
 /**
@@ -255,7 +255,7 @@ test("Collision rule set to error", t => {
         }
     };
     t.throws(
-        () => MergeBundle(existingBundle, nextBundle),
+        () => mergeBundle(existingBundle, nextBundle),
         {
             instanceOf: Error,
             message: "The bundle has been previously defined, and the bundle's 'onCollision' property is set to 'error'.",
@@ -296,8 +296,8 @@ test("Ignore collision rule on target bundle", t => {
         ]
     };
     t.notThrows(
-        () => MergeBundle(existingBundle, nextBundle),
+        () => mergeBundle(existingBundle, nextBundle),
         "The bundle has been previously defined, and the bundle's 'onCollision' property is set to 'error'."
     );
-    t.deepEqual(MergeBundle(existingBundle, nextBundle), output);
+    t.deepEqual(mergeBundle(existingBundle, nextBundle), output);
 });

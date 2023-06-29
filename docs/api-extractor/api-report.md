@@ -24,16 +24,12 @@ export interface Bundle {
 }
 
 // @public
-class BundleOrchestrator extends Transform {
+export class BundleOrchestrator extends Transform {
     constructor(config: Config, joiner: Bundlers, resultsCallback?: ResultsCallback);
     // (undocumented)
     _flush(callback: TransformCallback): Promise<void>;
     _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): Promise<void>;
 }
-
-export { BundleOrchestrator }
-
-export default BundleOrchestrator;
 
 // @public
 export interface Bundlers {
@@ -69,7 +65,7 @@ export interface Config {
 }
 
 // @public
-export function MergeRawConfigs(rawConfigs: Config[]): Config;
+export function mergeConfigs(rawConfigs: Config[]): Config;
 
 // @public
 export interface Options {
@@ -97,8 +93,7 @@ export interface SprinkleOptions {
 }
 
 // @public
-export function ValidateRawConfig(config: Config): void;
-
+export function validateConfig(config: Config): void;
 
 // (No @packageDocumentation comment for this package)
 
