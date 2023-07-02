@@ -1,6 +1,6 @@
 import test from "ava";
 import { Bundle } from "./bundle.js";
-import { Stream, Readable } from "stream";
+import { Readable } from "stream";
 import { resolve as resolvePath } from "path";
 import Vinyl from "vinyl";
 import intoStream from "into-stream";
@@ -10,7 +10,7 @@ import { logAdapter } from "@userfrosting/ts-log-adapter-ava";
  * Returns stream factory was provided, without modification.
  * @param src Source stream
  */
-function bundleFactoryEcho(src: Readable): Stream {
+function bundleFactoryEcho(src: Readable): Readable {
     return src;
 }
 
@@ -73,7 +73,7 @@ test("Multiple non-Vinyl chunks returned by bundle stream", async t => {
         "test",
         "script",
         [ resolvePath("./test-1.js") ],
-        function (): Stream {
+        function (): Readable {
             return intoStream.object([ {}, {} ]);
         },
         logAdapter(t.log),
@@ -93,7 +93,7 @@ test("Single non-Vinyl chunks returned by bundle stream", async t => {
         "test",
         "script",
         [ resolvePath("./test-1.js") ],
-        function (): Stream {
+        function (): Readable {
             return intoStream.object({});
         },
         logAdapter(t.log),

@@ -7,7 +7,6 @@
 /// <reference types="node" />
 
 import { Readable } from 'stream';
-import { Stream } from 'stream';
 import { Transform } from 'stream';
 import { TransformCallback } from 'stream';
 import TsLog from 'ts-log';
@@ -46,7 +45,7 @@ export interface Bundles {
 // @public
 export interface BundleStreamFactory {
     // (undocumented)
-    (src: Readable, name: string): Stream;
+    (src: Readable, name: string): Readable;
 }
 
 // @public

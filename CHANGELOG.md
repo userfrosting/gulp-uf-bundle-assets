@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Export `MergeRawConfigs` renamed to `mergeConfigs`.
 - Export `ValidateRawConfig` renamed to `validateConfig`.
 - [`Error.cause`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause) is now used, some thrown errors may be of a different type or have a simpler message.
+- Return type of `BundleStreamFactory` changed from `Stream` to `Readable`.
 
 ## [5.0.3] - 2022-03-16
 

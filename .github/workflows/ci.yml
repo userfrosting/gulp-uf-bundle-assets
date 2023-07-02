@@ -31,7 +31,7 @@ jobs:
         restore-keys: pnpm-store+${{matrix.platform}}+
     - uses: pnpm/action-setup@v2.2.4
       with:
-        version: ^7.12.1
+        version: ^8.6.5
         run_install: true
     - run: pnpm run compile
     - run: ./node_modules/.bin/c8 --reporter=lcovonly pnpm test
@@ -54,7 +54,7 @@ jobs:
         restore-keys: pnpm-store+ubuntu-latest+
     - uses: pnpm/action-setup@v2.2.4
       with:
-        version: ^7.12.1
+        version: ^8.6.5
         run_install: true
     - run: pnpm run release-readiness
 
