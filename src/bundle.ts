@@ -1,7 +1,6 @@
 import { Readable } from "stream";
 import Vinyl from "vinyl";
 import TsLog from "ts-log";
-import intoStream from "into-stream";
 
 /**
  * A function that returns a stream that will be used to bundle assets.
@@ -110,7 +109,7 @@ export class Bundle {
             );
             this.logger.info("Started bundling", { bundleName: this.name, type: this.type });
             const bundleStream = this.streamFactory(
-                intoStream.object(orderedFiles),
+                Readable.from(orderedFiles, { objectMode: true }),
                 this.name
             );
             const chunks: unknown[] = [];

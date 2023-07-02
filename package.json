@@ -45,7 +45,6 @@
         "url": "https://github.com/userfrosting/gulp-uf-bundle-assets/issues"
     },
     "dependencies": {
-        "into-stream": "^8.0.0",
         "just-extend": "^6.1.1",
         "plugin-error": "^2.0.0",
         "ts-log": "^2.2.5",
