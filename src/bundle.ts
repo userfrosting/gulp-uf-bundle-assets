@@ -1,8 +1,7 @@
-import { Readable, Stream } from "stream";
+import { Readable } from "stream";
 import Vinyl from "vinyl";
 import TsLog from "ts-log";
 import intoStream from "into-stream";
-import getStream from "get-stream";
 
 /**
  * A function that returns a stream that will be used to bundle assets.
@@ -13,7 +12,7 @@ export interface BundleStreamFactory {
      * @param src - Source stream.
      * @param name - Name of bundle.
      */
-    (src: Readable, name: string): Stream;
+    (src: Readable, name: string): Readable;
 }
 
 export type BundleType = "style" | "script";
@@ -110,12 +109,14 @@ export class Bundle {
                 }
             );
             this.logger.info("Started bundling", { bundleName: this.name, type: this.type });
-            const chunks = await getStream.array(
-                this.streamFactory(
-                    intoStream.object(orderedFiles),
-                    this.name
-                )
+            const bundleStream = this.streamFactory(
+                intoStream.object(orderedFiles),
+                this.name
             );
+            const chunks: unknown[] = [];
+            for await (const result of bundleStream) {
+                chunks.push(result);
+            }
 
             // Verify results are all Vinyl instances
             for (const chunk of chunks) {

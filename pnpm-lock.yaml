@@ -1,13 +1,6 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
-  get-stream:
-    specifier: ^7.0.0
-    version: 7.0.0
   into-stream:
     specifier: ^8.0.0
     version: 8.0.0
@@ -27,13 +20,13 @@ dependencies:
 devDependencies:
   '@microsoft/api-documenter':
     specifier: ^7.19.14
-    version: 7.22.21(@types/node@20.3.2)
+    version: 7.22.21(@types/node@20.3.3)
   '@microsoft/api-extractor':
     specifier: ^7.31.2
-    version: 7.36.0(@types/node@20.3.2)
+    version: 7.36.0(@types/node@20.3.3)
   '@types/node':
-    specifier: ^20.3.2
-    version: 20.3.2
+    specifier: ^20.3.3
+    version: 20.3.3
   '@types/vinyl':
     specifier: ^2.0.6
     version: 2.0.7
@@ -376,13 +369,13 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-documenter@7.22.21(@types/node@20.3.2):
+  /@microsoft/api-documenter@7.22.21(@types/node@20.3.3):
     resolution: {integrity: sha512-o8VXpB83P87cLIYfkQS7ibShoYorTZ7Xs+gMwftT75pFaYWwhBuI8M0MPgzTGIAxzi338XfUjhctlVCjRn+Sqg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.3(@types/node@20.3.2)
+      '@microsoft/api-extractor-model': 7.27.3(@types/node@20.3.3)
       '@microsoft/tsdoc': 0.14.2
-      '@rushstack/node-core-library': 3.59.4(@types/node@20.3.2)
+      '@rushstack/node-core-library': 3.59.4(@types/node@20.3.3)
       '@rushstack/ts-command-line': 4.15.1
       colors: 1.2.5
       js-yaml: 3.13.1
@@ -391,24 +384,24 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor-model@7.27.3(@types/node@20.3.2):
+  /@microsoft/api-extractor-model@7.27.3(@types/node@20.3.3):
     resolution: {integrity: sha512-fSFvw7otYHduOkyshjTbapKKgwF8bgquVHvgF8VgeKtMYvqXkoaj7W6VcM7PNY7E2bbblhUgC4XNdqZLD4SJGw==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.4(@types/node@20.3.2)
+      '@rushstack/node-core-library': 3.59.4(@types/node@20.3.3)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.36.0(@types/node@20.3.2):
+  /@microsoft/api-extractor@7.36.0(@types/node@20.3.3):
     resolution: {integrity: sha512-P+kYgJFDXIr+UNzhRMhlpM/dderi6ab4lxn35vdhfAIMPtGCSXIJxrrtpTOQmQW8CZtmoZX06LYoUsKCc1zjow==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.3(@types/node@20.3.2)
+      '@microsoft/api-extractor-model': 7.27.3(@types/node@20.3.3)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.4(@types/node@20.3.2)
+      '@rushstack/node-core-library': 3.59.4(@types/node@20.3.3)
       '@rushstack/rig-package': 0.4.0
       '@rushstack/ts-command-line': 4.15.1
       colors: 1.2.5
@@ -455,7 +448,7 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@rushstack/node-core-library@3.59.4(@types/node@20.3.2):
+  /@rushstack/node-core-library@3.59.4(@types/node@20.3.3):
     resolution: {integrity: sha512-YAKJDC6Mz/KA1D7bvB88WaRX3knt/ZuLzkRu5G9QADGSjLtvTWzCNCytRF2PCSaaHOZaZsWul4F1KQdgFgUDqA==}
     peerDependencies:
       '@types/node': '*'
@@ -463,7 +456,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 20.3.2
+      '@types/node': 20.3.3
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -505,8 +498,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.3.2:
-    resolution: {integrity: sha512-vOBLVQeCQfIcF/2Y7eKFTqrMnizK5lRNQ7ykML/5RuwVXVWxYkgwS7xbt4B6fKCUPgbSL5FSsjHQpaGQP/dQmw==}
+  /@types/node@20.3.3:
+    resolution: {integrity: sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -517,7 +510,7 @@ packages:
     resolution: {integrity: sha512-4UqPv+2567NhMQuMLdKAyK4yzrfCqwaTt6bLhHEs8PFcxbHILsrxaY63n4wgE/BRLDWDQeI+WcTmkXKExh9hQg==}
     dependencies:
       '@types/expect': 1.20.4
-      '@types/node': 20.3.2
+      '@types/node': 20.3.3
     dev: true
 
   /@userfrosting/ts-log-adapter-ava@0.1.1:
@@ -1395,11 +1388,6 @@ packages:
     resolution: {integrity: sha512-sY22aA6xchAzprjyqmSEQv4UbAAzRN0L2dQB0NlN5acTTK9Don6nhoc3eAbUnpZiCANAMfd/+40kVdKfFygohg==}
     engines: {node: '>=10'}
     dev: true
-
-  /get-stream@7.0.0:
-    resolution: {integrity: sha512-ql6FW5b8tgMYvI4UaoxG3EQN3VyZ6VeQpxNBGg5BZ4xD4u+HJeprzhMMA4OCBEGQgSR+m87pstWMpiVW64W8Fw==}
-    engines: {node: '>=16'}
-    dev: false
 
   /glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -2628,3 +2616,7 @@ packages:
     optionalDependencies:
       commander: 2.20.3
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
