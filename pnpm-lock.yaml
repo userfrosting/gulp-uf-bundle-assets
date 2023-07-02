@@ -1,9 +1,10 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
-  into-stream:
-    specifier: ^8.0.0
-    version: 8.0.0
   just-extend:
     specifier: ^6.1.1
     version: 6.2.0
@@ -1519,11 +1520,6 @@ packages:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
     dev: true
 
-  /into-stream@8.0.0:
-    resolution: {integrity: sha512-iQ+qehnm8loIU7DNaz7MiJCEAR6FIRd12AWZaXRINlR9nlQgunxsmY7/0GWq5mQ8JZqCyv2pBLCB5G5TUJGX/w==}
-    engines: {node: '>=16'}
-    dev: false
-
   /irregular-plurals@3.3.0:
     resolution: {integrity: sha512-MVBLKUTangM3EfRPFROhmWQQKRDsrgI83J8GS3jXy+OwYqiR2/aoWndYQ5416jLE3uaGgLH7ncme3X9y09gZ3g==}
     engines: {node: '>=8'}
@@ -2616,7 +2612,3 @@ packages:
     optionalDependencies:
       commander: 2.20.3
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

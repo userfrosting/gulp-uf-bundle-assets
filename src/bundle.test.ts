@@ -3,7 +3,6 @@ import { Bundle } from "./bundle.js";
 import { Readable } from "stream";
 import { resolve as resolvePath } from "path";
 import Vinyl from "vinyl";
-import intoStream from "into-stream";
 import { logAdapter } from "@userfrosting/ts-log-adapter-ava";
 
 /**
@@ -73,9 +72,7 @@ test("Multiple non-Vinyl chunks returned by bundle stream", async t => {
         "test",
         "script",
         [ resolvePath("./test-1.js") ],
-        function (): Readable {
-            return intoStream.object([ {}, {} ]);
-        },
+        () => Readable.from([{}, {}], { objectMode: true }),
         logAdapter(t.log),
     );
 
@@ -93,9 +90,7 @@ test("Single non-Vinyl chunks returned by bundle stream", async t => {
         "test",
         "script",
         [ resolvePath("./test-1.js") ],
-        function (): Readable {
-            return intoStream.object({});
-        },
+        () => Readable.from([{}], { objectMode: true }),
         logAdapter(t.log),
     );
 

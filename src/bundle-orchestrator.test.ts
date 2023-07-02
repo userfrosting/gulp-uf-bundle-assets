@@ -1,7 +1,6 @@
 import test, { ExecutionContext } from "ava";
 import { BundleOrchestrator, ResultsCallback } from "./bundle-orchestrator.js";
-import intoStream from "into-stream";
-import { Readable, Stream } from "stream";
+import { Readable } from "stream";
 import Vinyl from "vinyl";
 import { resolve as resolvePath } from "path";
 import sortOn from "sort-on";
@@ -146,12 +145,12 @@ test("Bundles with all dependencies met", async t => {
         resultsCallbackCompletion.resolve();
     };
 
-    const testStream = intoStream.object([
+    const testStream = Readable.from([
         new Vinyl({ path: resolvePath("./123/bar.js") }),
         new Vinyl({ path: resolvePath("./123/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.js") }),
-    ])
+    ], { objectMode: true })
         .pipe(buildBundler(t, { resultsCallback }));
 
     const results: Vinyl[] = [];
@@ -184,12 +183,12 @@ test("Bundles with all dependencies met", async t => {
  * this via its usage of this library.
  */
 test("Bundles with all dependencies met and custom cwd", async t => {
-    const testStream = intoStream.object([
+    const testStream = Readable.from([
         new Vinyl({ path: resolvePath("./123/bar.js") }),
         new Vinyl({ path: resolvePath("./123/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.js") }),
-    ])
+    ], { objectMode: true })
         .pipe(buildBundler(t, { explicitCwd: true }));
     const results: Vinyl[] = [];
     for await (const result of testStream) {
@@ -215,12 +214,12 @@ test("Bundles with all dependencies met and custom cwd", async t => {
 });
 
 test("No bundles to build", async t => {
-    const testStream = intoStream.object([
+    const testStream = Readable.from([
         new Vinyl({ path: resolvePath("./123/bar.js") }),
         new Vinyl({ path: resolvePath("./123/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.js") }),
-    ])
+    ], { objectMode: true })
         .pipe(buildBundler(t, { noBundles: true }));
     const results: Vinyl[] = [];
     for await (const result of testStream) {
@@ -243,12 +242,12 @@ test("No bundles to build", async t => {
 });
 
 test("No style bundles", async t => {
-    const testStream = intoStream.object([
+    const testStream = Readable.from([
         new Vinyl({ path: resolvePath("./123/bar.js") }),
         new Vinyl({ path: resolvePath("./123/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.js") }),
-    ])
+    ], { objectMode: true })
         .pipe(buildBundler(t, { noStyleBundles: true }));
     const results: Vinyl[] = [];
     for await (const result of testStream) {
@@ -273,12 +272,12 @@ test("No style bundles", async t => {
 });
 
 test("No script bundles", async t => {
-    const testStream = intoStream.object([
+    const testStream = Readable.from([
         new Vinyl({ path: resolvePath("./123/bar.js") }),
         new Vinyl({ path: resolvePath("./123/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.js") }),
-    ])
+    ], { objectMode: true })
         .pipe(buildBundler(t, { noScriptBundles: true }));
     const results: Vinyl[] = [];
     for await (const result of testStream) {
@@ -303,13 +302,13 @@ test("No script bundles", async t => {
 });
 
 test("Non-vinyl chunk pushed out when feed in", async t => {
-    const testStream = intoStream.object([
+    const testStream = Readable.from([
         new Vinyl({ path: resolvePath("./123/bar.js") }),
         new Vinyl({ path: resolvePath("./123/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.js") }),
         "nonsense-input",
-    ])
+    ], { objectMode: true })
         .pipe(buildBundler(t));
     try {
         const results: (Vinyl|string)[] = [];
@@ -325,11 +324,11 @@ test("Non-vinyl chunk pushed out when feed in", async t => {
 });
 
 test("Bundles with unmet dependencies", async t => {
-    const testStream = intoStream.object([
+    const testStream = Readable.from([
         new Vinyl({ path: resolvePath("./123/bar.js") }),
         new Vinyl({ path: resolvePath("./123/foo.css") }),
         new Vinyl({ path: resolvePath("./abc/foo.css") }),
-    ])
+    ], { objectMode: true })
         .pipe(buildBundler(t));
     await t.throwsAsync(
         async function () {
@@ -343,7 +342,7 @@ test("Bundles with unmet dependencies", async t => {
 });
 
 test("Bundles with all dependencies unmet", async t => {
-    const testStream = intoStream.object([])
+    const testStream = Readable.from([], { objectMode: true })
         .pipe(buildBundler(t));
     await t.throwsAsync(
         async function () {
