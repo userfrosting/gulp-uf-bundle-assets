@@ -14,10 +14,6 @@ npm i -D  @userfrosting/gulp-bundle-assets
 
 ## Usage
 
-> **IMPORTANT**<br/>
-> This is an ES module package targeting NodeJS `>=18.0.0`, refer to the [NodeJS ESM docs](https://nodejs.org/api/esm.html) regarding how to correctly import.
-> ESM loaders like `@babel/loader` or `esm` likely won't work as expected.
-
 ```js
 // gulpfile.mjs
 import { BundleOrchestrator } from "@userfrosting/gulp-bundle-assets";
@@ -63,6 +59,22 @@ export function bundle() {
 
 ```bash
 $ gulp bundle
+```
+
+### CJS Interoperability
+
+This is an ES module package targeting NodeJS `>=18.0.0`, it can be used in CJS contexts via dynamic `import`. Note that ESM loaders like `@babel/loader` or `esm` likely won't work as expected.
+
+```js
+// gulpfile.cjs
+
+// ...
+
+module.exports.bundle = async function bundle() {
+    const { BundleOrchestrator } = await import("@userfrosting/gulp-bundle-assets");
+
+    // ...
+}
 ```
 
 ## Integrating bundles into your app
