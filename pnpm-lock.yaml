@@ -24,7 +24,7 @@ devDependencies:
     version: 7.22.24(@types/node@20.4.1)
   '@microsoft/api-extractor':
     specifier: ^7.36.0
-    version: 7.36.1(@types/node@20.4.1)
+    version: 7.36.2(@types/node@20.4.1)
   '@types/node':
     specifier: ^20.3.3
     version: 20.4.1
@@ -401,8 +401,8 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.36.1(@types/node@20.4.1):
-    resolution: {integrity: sha512-2SPp1jq6wDY5IOsRLUv/4FxngslctBZJlztAJ3uWpCAwqKQG7ESdL3DhEza+StbYLtBQmu1Pk6q1Vkhl7qD/bg==}
+  /@microsoft/api-extractor@7.36.2(@types/node@20.4.1):
+    resolution: {integrity: sha512-ONe/jOmTZtR3OjTkWKHmeSV1P5ozbHDxHr6FV3KoWyIl1AcPk2B3dmvVBM5eOlZB5bgM66nxcWQTZ6msQo2hHg==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.27.4(@types/node@20.4.1)
