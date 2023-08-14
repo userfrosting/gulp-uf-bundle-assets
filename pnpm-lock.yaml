@@ -21,7 +21,7 @@ dependencies:
 devDependencies:
   '@microsoft/api-documenter':
     specifier: ^7.22.21
-    version: 7.22.32(@types/node@20.5.0)
+    version: 7.22.33(@types/node@20.5.0)
   '@microsoft/api-extractor':
     specifier: ^7.36.0
     version: 7.36.4(@types/node@20.5.0)
@@ -376,27 +376,17 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-documenter@7.22.32(@types/node@20.5.0):
-    resolution: {integrity: sha512-JePSgTg3qz5SiqcINQO52EKNh15DTbnvUpnx1qcrBlpR9gX0TmCw5g5uGPegIHJzIeif4uYe15nEUynrYDT2nw==}
+  /@microsoft/api-documenter@7.22.33(@types/node@20.5.0):
+    resolution: {integrity: sha512-9UUe5Z/vbTlMQy3kbSqPaJN7e3CT4LsfNFyP8szfdQEHXiO6BV2ZwwYIUtbQObgaKt7foL4A/cqRMKqhRIi7VQ==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.5(@types/node@20.5.0)
+      '@microsoft/api-extractor-model': 7.27.6(@types/node@20.5.0)
       '@microsoft/tsdoc': 0.14.2
-      '@rushstack/node-core-library': 3.59.6(@types/node@20.5.0)
-      '@rushstack/ts-command-line': 4.15.1
+      '@rushstack/node-core-library': 3.59.7(@types/node@20.5.0)
+      '@rushstack/ts-command-line': 4.15.2
       colors: 1.2.5
       js-yaml: 3.13.1
       resolve: 1.22.2
-    transitivePeerDependencies:
-      - '@types/node'
-    dev: true
-
-  /@microsoft/api-extractor-model@7.27.5(@types/node@20.5.0):
-    resolution: {integrity: sha512-9/tBzYMJitR+o+zkPr1lQh2+e8ClcaTF6eZo7vZGDqRt2O5XmXWPbYJZmxyM3wb5at6lfJNEeGZrQXLjsQ0Nbw==}
-    dependencies:
-      '@microsoft/tsdoc': 0.14.2
-      '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.6(@types/node@20.5.0)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
@@ -465,24 +455,6 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@rushstack/node-core-library@3.59.6(@types/node@20.5.0):
-    resolution: {integrity: sha512-bMYJwNFfWXRNUuHnsE9wMlW/mOB4jIwSUkRKtu02CwZhQdmzMsUbxE0s1xOLwTpNIwlzfW/YT7OnOHgDffLgYg==}
-    peerDependencies:
-      '@types/node': '*'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-    dependencies:
-      '@types/node': 20.5.0
-      colors: 1.2.5
-      fs-extra: 7.0.1
-      import-lazy: 4.0.0
-      jju: 1.4.0
-      resolve: 1.22.2
-      semver: 7.5.4
-      z-schema: 5.0.5
-    dev: true
-
   /@rushstack/node-core-library@3.59.7(@types/node@20.5.0):
     resolution: {integrity: sha512-ln1Drq0h+Hwa1JVA65x5mlSgUrBa1uHL+V89FqVWQgXd1vVIMhrtqtWGQrhTnFHxru5ppX+FY39VWELF/FjQCw==}
     peerDependencies:
@@ -506,15 +478,6 @@ packages:
     dependencies:
       resolve: 1.22.2
       strip-json-comments: 3.1.1
-    dev: true
-
-  /@rushstack/ts-command-line@4.15.1:
-    resolution: {integrity: sha512-EL4jxZe5fhb1uVL/P/wQO+Z8Rc8FMiWJ1G7VgnPDvdIt5GVjRfK7vwzder1CZQiX3x0PY6uxENYLNGTFd1InRQ==}
-    dependencies:
-      '@types/argparse': 1.0.38
-      argparse: 1.0.10
-      colors: 1.2.5
-      string-argv: 0.3.2
     dev: true
 
   /@rushstack/ts-command-line@4.15.2:
