@@ -48,7 +48,7 @@ devDependencies:
     version: 7.0.1
   del-cli:
     specifier: ^5.0.0
-    version: 5.0.0
+    version: 5.0.1
   p-defer:
     specifier: ^4.0.0
     version: 4.0.0
@@ -1175,8 +1175,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /del-cli@5.0.0:
-    resolution: {integrity: sha512-rENFhUaYcjoMODwFhhlON+ogN7DoG+4+GFN+bsA1XeDt4w2OKQnQadFP1thHSAlK9FAtl88qgP66wOV+eFZZiQ==}
+  /del-cli@5.0.1:
+    resolution: {integrity: sha512-hCDHJd0u0jKFqizgInYXZaILsqOIA7Zl6e7M3hJwP+SlwUAgtV/EB22EPF4e2+9VAVnBDQQBE6tDRe+/UuoFhg==}
     engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
