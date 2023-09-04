@@ -20,7 +20,7 @@ jobs:
         node-version: [ ^18.0.0, ^20.0.0 ]
     runs-on: ${{ matrix.platform }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
@@ -43,7 +43,7 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-node@v3
       with:
         node-version: ^20.0.0
@@ -65,7 +65,7 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Assess changes
       uses: tony84727/changed-file-filter@v0.2.2
       id: filter
