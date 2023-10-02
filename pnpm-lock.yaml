@@ -21,13 +21,13 @@ dependencies:
 devDependencies:
   '@microsoft/api-documenter':
     specifier: ^7.22.21
-    version: 7.23.9(@types/node@20.6.5)
+    version: 7.23.9(@types/node@20.8.0)
   '@microsoft/api-extractor':
     specifier: ^7.36.0
-    version: 7.37.0(@types/node@20.6.5)
+    version: 7.37.0(@types/node@20.8.0)
   '@types/node':
     specifier: ^20.3.3
-    version: 20.6.5
+    version: 20.8.0
   '@types/vinyl':
     specifier: ^2.0.7
     version: 2.0.8
@@ -395,13 +395,13 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-documenter@7.23.9(@types/node@20.6.5):
+  /@microsoft/api-documenter@7.23.9(@types/node@20.8.0):
     resolution: {integrity: sha512-CvOy3JF0oCDm3GDqce3uFS9QGO72lfOEgVbvpje32O+ug/WoL8ITOg2jZszMtowuClasPbpEcEoVsHJJLePirg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.2(@types/node@20.6.5)
+      '@microsoft/api-extractor-model': 7.28.2(@types/node@20.8.0)
       '@microsoft/tsdoc': 0.14.2
-      '@rushstack/node-core-library': 3.61.0(@types/node@20.6.5)
+      '@rushstack/node-core-library': 3.61.0(@types/node@20.8.0)
       '@rushstack/ts-command-line': 4.16.1
       colors: 1.2.5
       js-yaml: 3.13.1
@@ -410,34 +410,34 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor-model@7.28.0(@types/node@20.6.5):
+  /@microsoft/api-extractor-model@7.28.0(@types/node@20.8.0):
     resolution: {integrity: sha512-QIMtUVm1tqiKG+M6ciFgRShcDoovyltaeg+CbyOnyr7SMrp6gg0ojK5/nToMqR9kAvsTS4QVgW4Twl50EoAjcw==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.60.0(@types/node@20.6.5)
+      '@rushstack/node-core-library': 3.60.0(@types/node@20.8.0)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor-model@7.28.2(@types/node@20.6.5):
+  /@microsoft/api-extractor-model@7.28.2(@types/node@20.8.0):
     resolution: {integrity: sha512-vkojrM2fo3q4n4oPh4uUZdjJ2DxQ2+RnDQL/xhTWSRUNPF6P4QyrvY357HBxbnltKcYu+nNNolVqc6TIGQ73Ig==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.61.0(@types/node@20.6.5)
+      '@rushstack/node-core-library': 3.61.0(@types/node@20.8.0)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.37.0(@types/node@20.6.5):
+  /@microsoft/api-extractor@7.37.0(@types/node@20.8.0):
     resolution: {integrity: sha512-df/wffWpDhYRw7kzdxeHGsCpim+dC8aFiZlsJb4uFvVPWhBZpDzOhQxSUTFx3Df1ORY+/JjuPR3fDE9Hq+PHzQ==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.0(@types/node@20.6.5)
+      '@microsoft/api-extractor-model': 7.28.0(@types/node@20.8.0)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.60.0(@types/node@20.6.5)
+      '@rushstack/node-core-library': 3.60.0(@types/node@20.8.0)
       '@rushstack/rig-package': 0.5.0
       '@rushstack/ts-command-line': 4.16.0
       colors: 1.2.5
@@ -484,7 +484,7 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@rushstack/node-core-library@3.60.0(@types/node@20.6.5):
+  /@rushstack/node-core-library@3.60.0(@types/node@20.8.0):
     resolution: {integrity: sha512-PcyrqhILvzU+65wMFybQ2VeGNnU5JzhDq2OvUi3j6jPUxyllM7b2hrRUwCuVaYboewYzIbpzXFzgxe2K7ii1nw==}
     peerDependencies:
       '@types/node': '*'
@@ -492,7 +492,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 20.6.5
+      '@types/node': 20.8.0
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -502,7 +502,7 @@ packages:
       z-schema: 5.0.5
     dev: true
 
-  /@rushstack/node-core-library@3.61.0(@types/node@20.6.5):
+  /@rushstack/node-core-library@3.61.0(@types/node@20.8.0):
     resolution: {integrity: sha512-tdOjdErme+/YOu4gPed3sFS72GhtWCgNV9oDsHDnoLY5oDfwjKUc9Z+JOZZ37uAxcm/OCahDHfuu2ugqrfWAVQ==}
     peerDependencies:
       '@types/node': '*'
@@ -510,7 +510,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 20.6.5
+      '@types/node': 20.8.0
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -561,8 +561,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@20.6.5:
-    resolution: {integrity: sha512-2qGq5LAOTh9izcc0+F+dToFigBWiK1phKPt7rNhOqJSr35y8rlIBjDwGtFSgAI6MGIhjwOVNSQZVdJsZJ2uR1w==}
+  /@types/node@20.8.0:
+    resolution: {integrity: sha512-LzcWltT83s1bthcvjBmiBvGJiiUe84NWRHkw+ZV6Fr41z2FbIzvc815dk2nQ3RAKMuN2fkenM/z3Xv2QzEpYxQ==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -573,7 +573,7 @@ packages:
     resolution: {integrity: sha512-bls3EAsYVnVoPKoqgFC4Rtq7Kzte4MCk8xMA9UEPPVncJFsov9FJWYj0uxqJRwNEi9b4i4zX13FydaDrhadmHg==}
     dependencies:
       '@types/expect': 1.20.4
-      '@types/node': 20.6.5
+      '@types/node': 20.8.0
     dev: true
 
   /@userfrosting/ts-log-adapter-ava@0.1.1:
