@@ -62,7 +62,7 @@
         "cspell": "^7.0.0",
         "del-cli": "^5.0.0",
         "p-defer": "^4.0.0",
-        "sort-on": "^5.2.0",
+        "sort-on": "^6.0.0",
         "typescript": "^5.1.6"
     },
     "engines": {
