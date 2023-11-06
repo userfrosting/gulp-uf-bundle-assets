@@ -21,7 +21,7 @@ dependencies:
 devDependencies:
   '@microsoft/api-documenter':
     specifier: ^7.22.21
-    version: 7.23.9(@types/node@20.8.10)
+    version: 7.23.11(@types/node@20.8.10)
   '@microsoft/api-extractor':
     specifier: ^7.36.0
     version: 7.38.0(@types/node@20.8.10)
@@ -395,14 +395,14 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-documenter@7.23.9(@types/node@20.8.10):
-    resolution: {integrity: sha512-CvOy3JF0oCDm3GDqce3uFS9QGO72lfOEgVbvpje32O+ug/WoL8ITOg2jZszMtowuClasPbpEcEoVsHJJLePirg==}
+  /@microsoft/api-documenter@7.23.11(@types/node@20.8.10):
+    resolution: {integrity: sha512-lrtB1DDN3xlvadGPKtR+Rdo3Dn6039D7URrHtINCG8o4bUdrRrMidU3WNWjAXktM94XLa58nxeoKCscOmEqVtQ==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.2(@types/node@20.8.10)
       '@microsoft/tsdoc': 0.14.2
       '@rushstack/node-core-library': 3.61.0(@types/node@20.8.10)
-      '@rushstack/ts-command-line': 4.16.1
+      '@rushstack/ts-command-line': 4.17.1
       colors: 1.2.5
       js-yaml: 3.13.1
       resolve: 1.22.2
@@ -501,6 +501,15 @@ packages:
 
   /@rushstack/ts-command-line@4.16.1:
     resolution: {integrity: sha512-+OCsD553GYVLEmz12yiFjMOzuPeCiZ3f8wTiFHL30ZVXexTyPmgjwXEhg2K2P0a2lVf+8YBy7WtPoflB2Fp8/A==}
+    dependencies:
+      '@types/argparse': 1.0.38
+      argparse: 1.0.10
+      colors: 1.2.5
+      string-argv: 0.3.2
+    dev: true
+
+  /@rushstack/ts-command-line@4.17.1:
+    resolution: {integrity: sha512-2jweO1O57BYP5qdBGl6apJLB+aRIn5ccIRTPDyULh0KMwVzFqWtw6IZWt1qtUoZD/pD2RNkIOosH6Cq45rIYeg==}
     dependencies:
       '@types/argparse': 1.0.38
       argparse: 1.0.10
