@@ -30,7 +30,7 @@ devDependencies:
     version: 20.8.10
   '@types/vinyl':
     specifier: ^2.0.7
-    version: 2.0.9
+    version: 2.0.10
   '@userfrosting/ts-log-adapter-ava':
     specifier: ^0.1.1
     version: 0.1.1
@@ -534,8 +534,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@types/vinyl@2.0.9:
-    resolution: {integrity: sha512-KCr4aTEUkzSF89qw09e2oxsC/RXXT3K5ZPv4gvj3XTiWVrxNoi7WrqNTahNE/Hul5C9z3B8w+yWNTQgua12oag==}
+  /@types/vinyl@2.0.10:
+    resolution: {integrity: sha512-DqN5BjCrmjAtZ1apqzcq2vk2PSW0m1nFfjIafBFkAyddmHxuw3ZAK3omLiSdpuu81+8h07i6U4DtaE38Xsf2xQ==}
     dependencies:
       '@types/expect': 1.20.4
       '@types/node': 20.8.10
