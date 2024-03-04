@@ -24,7 +24,7 @@ devDependencies:
     version: 7.23.36(@types/node@20.11.20)
   '@microsoft/api-extractor':
     specifier: ^7.36.0
-    version: 7.41.0(@types/node@20.11.20)
+    version: 7.42.3(@types/node@20.11.20)
   '@types/node':
     specifier: ^20.3.3
     version: 20.11.20
@@ -437,8 +437,8 @@ packages:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.41.0(@types/node@20.11.20):
-    resolution: {integrity: sha512-Wk4fcSqO1i32FspStEm4ak+cfdo2xGsWk/K9uZoYIRQxjQH/roLU78waP+g+GhoAg5OxH63BfY37h6ISkNfQEQ==}
+  /@microsoft/api-extractor@7.42.3(@types/node@20.11.20):
+    resolution: {integrity: sha512-JNLJFpGHz6ekjS6bvYXxUBeRGnSHeCMFNvRbCQ+7XXB/ZFrgLSMPwWtEq40AiWAy+oyG5a4RSNwdJTp0B2USvQ==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.28.13(@types/node@20.11.20)
@@ -447,8 +447,9 @@ packages:
       '@rushstack/node-core-library': 4.0.2(@types/node@20.11.20)
       '@rushstack/rig-package': 0.5.2
       '@rushstack/terminal': 0.10.0(@types/node@20.11.20)
-      '@rushstack/ts-command-line': 4.17.4(@types/node@20.11.20)
+      '@rushstack/ts-command-line': 4.19.1(@types/node@20.11.20)
       lodash: 4.17.21
+      minimatch: 3.0.8
       resolve: 1.22.2
       semver: 7.5.4
       source-map: 0.6.1
@@ -533,17 +534,6 @@ packages:
       '@rushstack/node-core-library': 4.0.2(@types/node@20.11.20)
       '@types/node': 20.11.20
       supports-color: 8.1.1
-    dev: true
-
-  /@rushstack/ts-command-line@4.17.4(@types/node@20.11.20):
-    resolution: {integrity: sha512-XPQQDaxgFqRHFRgt7jjCKnr0vrC75s/+ISU6kGhWpDlGzWl4vig6ZfZTs3HgM6Kh1Bb3wUKSyKQOV+G36cyZfg==}
-    dependencies:
-      '@rushstack/terminal': 0.10.0(@types/node@20.11.20)
-      '@types/argparse': 1.0.38
-      argparse: 1.0.10
-      string-argv: 0.3.2
-    transitivePeerDependencies:
-      - '@types/node'
     dev: true
 
   /@rushstack/ts-command-line@4.19.1(@types/node@20.11.20):
@@ -1917,6 +1907,12 @@ packages:
   /min-indent@1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
+    dev: true
+
+  /minimatch@3.0.8:
+    resolution: {integrity: sha512-6FsRAQsxQ61mw+qP1ZzbL9Bc78x2p5OqNgNpnoAFLTrX8n5Kxph0CsnhmKKNXTWjXqU5L0pGPR7hYk+XWZr60Q==}
+    dependencies:
+      brace-expansion: 1.1.11
     dev: true
 
   /minimatch@3.1.2:
