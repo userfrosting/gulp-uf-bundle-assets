@@ -337,6 +337,8 @@ test("Bundles with unmet dependencies", async t => {
         {
             instanceOf: Error,
             message: "Stream completed before all bundles received their dependencies",
+            // PluginError does not satisfy `isNativeError`
+            any: true,
         }
     );
 });
@@ -351,6 +353,8 @@ test("Bundles with all dependencies unmet", async t => {
         {
             instanceOf: Error,
             message: "Stream completed before all bundles received their dependencies",
+            // PluginError does not satisfy `isNativeError`
+            any: true,
         }
     );
 });
