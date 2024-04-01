@@ -51,7 +51,7 @@ devDependencies:
     version: 5.1.0
   p-defer:
     specifier: ^4.0.0
-    version: 4.0.0
+    version: 4.0.1
   sort-on:
     specifier: ^6.0.0
     version: 6.0.0
@@ -2159,8 +2159,8 @@ packages:
       wrappy: 1.0.2
     dev: true
 
-  /p-defer@4.0.0:
-    resolution: {integrity: sha512-Vb3QRvQ0Y5XnF40ZUWW7JfLogicVh/EnA5gBIvKDJoYpeI82+1E3AlB9yOcKFS0AhHrWVnAQO39fbR0G99IVEQ==}
+  /p-defer@4.0.1:
+    resolution: {integrity: sha512-Mr5KC5efvAK5VUptYEIopP1bakB85k2IWXaRC0rsh1uwn1L6M0LVml8OIQ4Gudg4oyZakf7FmeRLkMMtZW1i5A==}
     engines: {node: '>=12'}
     dev: true
 
