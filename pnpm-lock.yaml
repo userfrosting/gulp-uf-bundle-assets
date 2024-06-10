@@ -21,7 +21,7 @@ dependencies:
 devDependencies:
   '@microsoft/api-documenter':
     specifier: ^7.22.21
-    version: 7.25.2(@types/node@20.14.0)
+    version: 7.25.3(@types/node@20.14.0)
   '@microsoft/api-extractor':
     specifier: ^7.36.0
     version: 7.47.0(@types/node@20.14.0)
@@ -450,8 +450,8 @@ packages:
       - supports-color
     dev: true
 
-  /@microsoft/api-documenter@7.25.2(@types/node@20.14.0):
-    resolution: {integrity: sha512-5srpPYawzGkSqjP25gopOZvH6/T8IYZN55L8NelZxck77nShOjZJt+qPZUaMy34qtL7GAWXhSDuKXEtZWurZsQ==}
+  /@microsoft/api-documenter@7.25.3(@types/node@20.14.0):
+    resolution: {integrity: sha512-xigAN2KPukckFhXMp+Zv8UhIh8lRpu5RXoM+Pl1HRHAVtIWN0oWMIeGU1bU79W+bCRTuo5zsQ98NvN6DHFMXaQ==}
     hasBin: true
     dependencies:
       '@microsoft/api-extractor-model': 7.29.2(@types/node@20.14.0)
