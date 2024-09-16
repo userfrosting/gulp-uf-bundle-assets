@@ -23,13 +23,13 @@ importers:
     devDependencies:
       '@microsoft/api-documenter':
         specifier: ^7.22.21
-        version: 7.25.12(@types/node@22.5.4)
+        version: 7.25.12(@types/node@22.5.5)
       '@microsoft/api-extractor':
         specifier: ^7.36.0
-        version: 7.47.7(@types/node@22.5.4)
+        version: 7.47.7(@types/node@22.5.5)
       '@types/node':
         specifier: ^22.0.0
-        version: 22.5.4
+        version: 22.5.5
       '@types/vinyl':
         specifier: ^2.0.7
         version: 2.0.12
@@ -374,8 +374,8 @@ packages:
   '@types/minimist@1.2.2':
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
 
-  '@types/node@22.5.4':
-    resolution: {integrity: sha512-FDuKUJQm/ju9fT/SeX/6+gBzoPzlVCzfzmGkwKvRHQVxi4BntVbyIwf6a4Xn62mrvndLiml6z/UBXIdEVjQLXg==}
+  '@types/node@22.5.5':
+    resolution: {integrity: sha512-Xjs4y5UPO/CLdzpgR6GirZJx36yScjh73+2NlLlkFRSoQN8B0DpfXPdZGnvVmLRLOsqDpOfTNv7D9trgGhmOIA==}
 
   '@types/normalize-package-data@2.4.1':
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -1955,35 +1955,35 @@ snapshots:
       - encoding
       - supports-color
 
-  '@microsoft/api-documenter@7.25.12(@types/node@22.5.4)':
+  '@microsoft/api-documenter@7.25.12(@types/node@22.5.5)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.29.6(@types/node@22.5.4)
+      '@microsoft/api-extractor-model': 7.29.6(@types/node@22.5.5)
       '@microsoft/tsdoc': 0.15.0
-      '@rushstack/node-core-library': 5.7.0(@types/node@22.5.4)
-      '@rushstack/terminal': 0.14.0(@types/node@22.5.4)
-      '@rushstack/ts-command-line': 4.22.6(@types/node@22.5.4)
+      '@rushstack/node-core-library': 5.7.0(@types/node@22.5.5)
+      '@rushstack/terminal': 0.14.0(@types/node@22.5.5)
+      '@rushstack/ts-command-line': 4.22.6(@types/node@22.5.5)
       js-yaml: 3.13.1
       resolve: 1.22.2
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor-model@7.29.6(@types/node@22.5.4)':
+  '@microsoft/api-extractor-model@7.29.6(@types/node@22.5.5)':
     dependencies:
       '@microsoft/tsdoc': 0.15.0
       '@microsoft/tsdoc-config': 0.17.0
-      '@rushstack/node-core-library': 5.7.0(@types/node@22.5.4)
+      '@rushstack/node-core-library': 5.7.0(@types/node@22.5.5)
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.47.7(@types/node@22.5.4)':
+  '@microsoft/api-extractor@7.47.7(@types/node@22.5.5)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.29.6(@types/node@22.5.4)
+      '@microsoft/api-extractor-model': 7.29.6(@types/node@22.5.5)
       '@microsoft/tsdoc': 0.15.0
       '@microsoft/tsdoc-config': 0.17.0
-      '@rushstack/node-core-library': 5.7.0(@types/node@22.5.4)
+      '@rushstack/node-core-library': 5.7.0(@types/node@22.5.5)
       '@rushstack/rig-package': 0.5.3
-      '@rushstack/terminal': 0.14.0(@types/node@22.5.4)
-      '@rushstack/ts-command-line': 4.22.6(@types/node@22.5.4)
+      '@rushstack/terminal': 0.14.0(@types/node@22.5.5)
+      '@rushstack/ts-command-line': 4.22.6(@types/node@22.5.5)
       lodash: 4.17.21
       minimatch: 3.0.8
       resolve: 1.22.2
@@ -2022,7 +2022,7 @@ snapshots:
       estree-walker: 2.0.2
       picomatch: 2.3.1
 
-  '@rushstack/node-core-library@5.7.0(@types/node@22.5.4)':
+  '@rushstack/node-core-library@5.7.0(@types/node@22.5.5)':
     dependencies:
       ajv: 8.13.0
       ajv-draft-04: 1.0.0(ajv@8.13.0)
@@ -2033,23 +2033,23 @@ snapshots:
       resolve: 1.22.2
       semver: 7.5.4
     optionalDependencies:
-      '@types/node': 22.5.4
+      '@types/node': 22.5.5
 
   '@rushstack/rig-package@0.5.3':
     dependencies:
       resolve: 1.22.2
       strip-json-comments: 3.1.1
 
-  '@rushstack/terminal@0.14.0(@types/node@22.5.4)':
+  '@rushstack/terminal@0.14.0(@types/node@22.5.5)':
     dependencies:
-      '@rushstack/node-core-library': 5.7.0(@types/node@22.5.4)
+      '@rushstack/node-core-library': 5.7.0(@types/node@22.5.5)
       supports-color: 8.1.1
     optionalDependencies:
-      '@types/node': 22.5.4
+      '@types/node': 22.5.5
 
-  '@rushstack/ts-command-line@4.22.6(@types/node@22.5.4)':
+  '@rushstack/ts-command-line@4.22.6(@types/node@22.5.5)':
     dependencies:
-      '@rushstack/terminal': 0.14.0(@types/node@22.5.4)
+      '@rushstack/terminal': 0.14.0(@types/node@22.5.5)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -2066,7 +2066,7 @@ snapshots:
 
   '@types/minimist@1.2.2': {}
 
-  '@types/node@22.5.4':
+  '@types/node@22.5.5':
     dependencies:
       undici-types: 6.19.6
 
@@ -2075,7 +2075,7 @@ snapshots:
   '@types/vinyl@2.0.12':
     dependencies:
       '@types/expect': 1.20.4
-      '@types/node': 22.5.4
+      '@types/node': 22.5.5
 
   '@userfrosting/ts-log-adapter-ava@0.1.1':
     dependencies:
