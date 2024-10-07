@@ -60,7 +60,7 @@
         "c8": "^10.1.2",
         "changelog-updater": "^2.0.3",
         "cspell": "^8.3.2",
-        "del-cli": "^5.0.0",
+        "del-cli": "^6.0.0",
         "p-defer": "^4.0.0",
         "sort-on": "^6.0.0",
         "typescript": "^5.1.6"
