@@ -16,7 +16,7 @@ importers:
         version: 2.0.1
       ts-log:
         specifier: ^2.2.5
-        version: 2.2.5
+        version: 2.2.7
       vinyl:
         specifier: ^3.0.0
         version: 3.0.0
@@ -1600,8 +1600,8 @@ packages:
     resolution: {integrity: sha512-jRKj0n0jXWo6kh62nA5TEh3+4igKDXLvzBJcPpiizP7oOolUrYIxmVBG9TOtHYFHoddUk6YvAkGeGoSVTXfQXQ==}
     engines: {node: '>=12'}
 
-  ts-log@2.2.5:
-    resolution: {integrity: sha512-PGcnJoTBnVGy6yYNFxWVNkdcAuAMstvutN9MgDJIV6L0oG8fB+ZNNy1T+wJzah8RPGor1mZuPQkVfXNDpy9eHA==}
+  ts-log@2.2.7:
+    resolution: {integrity: sha512-320x5Ggei84AxzlXp91QkIGSw5wgaLT6GeAH0KsqDmRZdVWW2OiSeVvElVoatk3f7nicwXlElXsoFkARiGE2yg==}
 
   type-fest@0.13.1:
     resolution: {integrity: sha512-34R7HTnG0XIJcBSn5XhDd7nNFPRcXYRZrBB2O2jdKqYODldSzBAqzsWoZYYvduky73toYS/ESqxPvkDf/F0XMg==}
@@ -2089,7 +2089,7 @@ snapshots:
 
   '@userfrosting/ts-log-adapter-ava@0.1.1':
     dependencies:
-      ts-log: 2.2.5
+      ts-log: 2.2.7
 
   '@vercel/nft@0.26.4':
     dependencies:
@@ -3271,7 +3271,7 @@ snapshots:
 
   trim-newlines@4.1.1: {}
 
-  ts-log@2.2.5: {}
+  ts-log@2.2.7: {}
 
   type-fest@0.13.1: {}
 
