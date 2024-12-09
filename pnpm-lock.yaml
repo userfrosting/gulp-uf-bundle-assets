@@ -23,7 +23,7 @@ importers:
     devDependencies:
       '@microsoft/api-documenter':
         specifier: ^7.22.21
-        version: 7.26.0(@types/node@22.10.1)
+        version: 7.26.1(@types/node@22.10.1)
       '@microsoft/api-extractor':
         specifier: ^7.36.0
         version: 7.48.0(@types/node@22.10.1)
@@ -301,8 +301,8 @@ packages:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
 
-  '@microsoft/api-documenter@7.26.0':
-    resolution: {integrity: sha512-iI/Oj+vzHwD2YlsHCmw3I5nvunVWxL+F5B1GOBDn5yl2dZ5KOCoh1osOTl9uRDRR65ZGymIUO1EajMgjMZBdEw==}
+  '@microsoft/api-documenter@7.26.1':
+    resolution: {integrity: sha512-flh7iPXsA3hzn03iXQYLiq7dvhTiBagGjmf7lvTNGABjWAKJez7ABI5T7+1jzbXjF3Luy1LFzugecXz9tMBavw==}
     hasBin: true
 
   '@microsoft/api-extractor-model@7.30.0':
@@ -1782,7 +1782,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@microsoft/api-documenter@7.26.0(@types/node@22.10.1)':
+  '@microsoft/api-documenter@7.26.1(@types/node@22.10.1)':
     dependencies:
       '@microsoft/api-extractor-model': 7.30.0(@types/node@22.10.1)
       '@microsoft/tsdoc': 0.15.1
