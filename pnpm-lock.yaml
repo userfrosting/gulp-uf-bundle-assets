@@ -23,13 +23,13 @@ importers:
     devDependencies:
       '@microsoft/api-documenter':
         specifier: ^7.22.21
-        version: 7.26.5(@types/node@22.10.7)
+        version: 7.26.5(@types/node@22.10.10)
       '@microsoft/api-extractor':
         specifier: ^7.36.0
-        version: 7.49.1(@types/node@22.10.7)
+        version: 7.49.1(@types/node@22.10.10)
       '@types/node':
         specifier: ^22.0.0
-        version: 22.10.7
+        version: 22.10.10
       '@types/vinyl':
         specifier: ^2.0.7
         version: 2.0.12
@@ -380,8 +380,8 @@ packages:
   '@types/istanbul-lib-coverage@2.0.4':
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
 
-  '@types/node@22.10.7':
-    resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
+  '@types/node@22.10.10':
+    resolution: {integrity: sha512-X47y/mPNzxviAGY5TcYPtYL8JsY3kAq2n8fMmKoRCxq/c4v4pyGNCzM2R6+M5/umG4ZfHuT+sgqDYqWc9rJ6ww==}
 
   '@types/vinyl@2.0.12':
     resolution: {integrity: sha512-Sr2fYMBUVGYq8kj3UthXFAu5UN6ZW+rYr4NACjZQJvHvj+c8lYv0CahmZ2P/r7iUkN44gGUBwqxZkrKXYPb7cw==}
@@ -1803,35 +1803,35 @@ snapshots:
       - encoding
       - supports-color
 
-  '@microsoft/api-documenter@7.26.5(@types/node@22.10.7)':
+  '@microsoft/api-documenter@7.26.5(@types/node@22.10.10)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.30.2(@types/node@22.10.7)
+      '@microsoft/api-extractor-model': 7.30.2(@types/node@22.10.10)
       '@microsoft/tsdoc': 0.15.1
-      '@rushstack/node-core-library': 5.10.2(@types/node@22.10.7)
-      '@rushstack/terminal': 0.14.5(@types/node@22.10.7)
-      '@rushstack/ts-command-line': 4.23.3(@types/node@22.10.7)
+      '@rushstack/node-core-library': 5.10.2(@types/node@22.10.10)
+      '@rushstack/terminal': 0.14.5(@types/node@22.10.10)
+      '@rushstack/ts-command-line': 4.23.3(@types/node@22.10.10)
       js-yaml: 3.13.1
       resolve: 1.22.2
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor-model@7.30.2(@types/node@22.10.7)':
+  '@microsoft/api-extractor-model@7.30.2(@types/node@22.10.10)':
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
-      '@rushstack/node-core-library': 5.10.2(@types/node@22.10.7)
+      '@rushstack/node-core-library': 5.10.2(@types/node@22.10.10)
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.49.1(@types/node@22.10.7)':
+  '@microsoft/api-extractor@7.49.1(@types/node@22.10.10)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.30.2(@types/node@22.10.7)
+      '@microsoft/api-extractor-model': 7.30.2(@types/node@22.10.10)
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
-      '@rushstack/node-core-library': 5.10.2(@types/node@22.10.7)
+      '@rushstack/node-core-library': 5.10.2(@types/node@22.10.10)
       '@rushstack/rig-package': 0.5.3
-      '@rushstack/terminal': 0.14.5(@types/node@22.10.7)
-      '@rushstack/ts-command-line': 4.23.3(@types/node@22.10.7)
+      '@rushstack/terminal': 0.14.5(@types/node@22.10.10)
+      '@rushstack/ts-command-line': 4.23.3(@types/node@22.10.10)
       lodash: 4.17.21
       minimatch: 3.0.8
       resolve: 1.22.2
@@ -1870,7 +1870,7 @@ snapshots:
       estree-walker: 2.0.2
       picomatch: 2.3.1
 
-  '@rushstack/node-core-library@5.10.2(@types/node@22.10.7)':
+  '@rushstack/node-core-library@5.10.2(@types/node@22.10.10)':
     dependencies:
       ajv: 8.13.0
       ajv-draft-04: 1.0.0(ajv@8.13.0)
@@ -1881,23 +1881,23 @@ snapshots:
       resolve: 1.22.2
       semver: 7.5.4
     optionalDependencies:
-      '@types/node': 22.10.7
+      '@types/node': 22.10.10
 
   '@rushstack/rig-package@0.5.3':
     dependencies:
       resolve: 1.22.2
       strip-json-comments: 3.1.1
 
-  '@rushstack/terminal@0.14.5(@types/node@22.10.7)':
+  '@rushstack/terminal@0.14.5(@types/node@22.10.10)':
     dependencies:
-      '@rushstack/node-core-library': 5.10.2(@types/node@22.10.7)
+      '@rushstack/node-core-library': 5.10.2(@types/node@22.10.10)
       supports-color: 8.1.1
     optionalDependencies:
-      '@types/node': 22.10.7
+      '@types/node': 22.10.10
 
-  '@rushstack/ts-command-line@4.23.3(@types/node@22.10.7)':
+  '@rushstack/ts-command-line@4.23.3(@types/node@22.10.10)':
     dependencies:
-      '@rushstack/terminal': 0.14.5(@types/node@22.10.7)
+      '@rushstack/terminal': 0.14.5(@types/node@22.10.10)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -1912,14 +1912,14 @@ snapshots:
 
   '@types/istanbul-lib-coverage@2.0.4': {}
 
-  '@types/node@22.10.7':
+  '@types/node@22.10.10':
     dependencies:
       undici-types: 6.20.0
 
   '@types/vinyl@2.0.12':
     dependencies:
       '@types/expect': 1.20.4
-      '@types/node': 22.10.7
+      '@types/node': 22.10.10
 
   '@userfrosting/ts-log-adapter-ava@0.1.1':
     dependencies:
