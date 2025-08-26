@@ -35,7 +35,7 @@ jobs:
         run_install: true
     - run: pnpm run compile
     - run: ./node_modules/.bin/c8 --reporter=lcovonly pnpm test
-    - uses: codecov/codecov-action@v5.4.3
+    - uses: codecov/codecov-action@v5.5.0
 
   release-readiness:
     runs-on: ubuntu-latest
