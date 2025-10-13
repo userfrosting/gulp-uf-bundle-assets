@@ -29,7 +29,7 @@ jobs:
         path: ~/.pnpm-store
         key: pnpm-store+${{matrix.platform}}+${{matrix.node-version}}+${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: pnpm-store+${{matrix.platform}}+
-    - uses: pnpm/action-setup@v4.1.0
+    - uses: pnpm/action-setup@v4.2.0
       with:
         version: ^8.15.4
         run_install: true
@@ -52,7 +52,7 @@ jobs:
         path: ~/.pnpm-store
         key: pnpm-store+ubuntu-latest+^16.0.0+${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: pnpm-store+ubuntu-latest+
-    - uses: pnpm/action-setup@v4.1.0
+    - uses: pnpm/action-setup@v4.2.0
       with:
         version: ^8.15.4
         run_install: true
