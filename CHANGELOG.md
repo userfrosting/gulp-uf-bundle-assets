@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Changed
-- Raised minimum NodeJS version from 12.17.0 to 18.
+- Raised minimum NodeJS version from 12.17.0 to 22.
 - Default export removed. Use named export `BundleOrchestrator`.
 - Export `MergeRawConfigs` renamed to `mergeConfigs`.
 - Export `ValidateRawConfig` renamed to `validateConfig`.

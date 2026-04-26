@@ -1,7 +1,7 @@
 {
-    "$schema": "http://json.schemastore.org/tsconfig",
+    "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
-        "module": "Node16",
+        "module": "Node20",
         "moduleResolution": "Node16",
         "lib": [
             "es2022"

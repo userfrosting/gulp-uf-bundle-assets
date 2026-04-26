@@ -63,7 +63,7 @@ $ gulp bundle
 
 ### CJS Interoperability
 
-This is an ES module package targeting NodeJS `>=18.0.0`, it can be used in CJS contexts via dynamic `import`. Note that ESM loaders like `@babel/loader` or `esm` likely won't work as expected.
+This is an ES module package targeting NodeJS `>=22.0.0`, it can be used in CJS contexts via dynamic `import`. Note that ESM loaders like `@babel/loader` or `esm` likely won't work as expected.
 
 ```js
 // gulpfile.cjs
